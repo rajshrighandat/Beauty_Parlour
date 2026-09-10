@@ -18,74 +18,279 @@
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <!-- Critical Self-Contained Modal CSS (Guarantees Perfect Centering & Blur without CDN/Cache lag) -->
+    <style>
+        /* Popup Overlay Fullscreen */
+        #langModalOverlay {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            background: rgba(15, 2, 8, 0.85) !important;
+            backdrop-filter: blur(14px) !important;
+            -webkit-backdrop-filter: blur(14px) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            z-index: 999999 !important;
+            padding: 20px !important;
+            box-sizing: border-box !important;
+            transition: opacity 0.35s ease, visibility 0.35s ease !important;
+        }
+
+        #langModalOverlay.modal-hidden {
+            display: none !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+            visibility: hidden !important;
+        }
+
+        /* Popup Box Centered Card */
+        .lang-modal-box {
+            background: linear-gradient(160deg, #4d0e2d 0%, #280516 100%) !important;
+            border: 2px solid #f5d77f !important;
+            border-radius: 22px !important;
+            width: 100% !important;
+            max-width: 460px !important;
+            padding: 35px 28px !important;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(245, 215, 127, 0.35) !important;
+            text-align: center !important;
+            box-sizing: border-box !important;
+            animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+        }
+
+        @keyframes modalPop {
+            0% {
+                opacity: 0;
+                transform: scale(0.85) translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-icon-circle {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffe599 0%, #d4af37 50%, #996515 100%);
+            color: #230412;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 0 20px rgba(245, 215, 127, 0.6);
+        }
+
+        .modal-main-title {
+            font-family: 'Rozha One', 'Yatra One', 'Tiro Devanagari Marathi', serif !important;
+            font-size: 2.1rem !important;
+            background: linear-gradient(135deg, #ffe599 0%, #d4af37 50%, #996515 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            margin: 0 0 4px 0 !important;
+            line-height: 1.2 !important;
+        }
+
+        .modal-tagline-text {
+            color: #f5d77f !important;
+            font-size: 0.95rem !important;
+            font-family: 'Tiro Devanagari Marathi', serif !important;
+            margin: 0 0 20px 0 !important;
+        }
+
+        .modal-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(245, 215, 127, 0.5), transparent);
+            margin: 0 0 20px 0;
+        }
+
+        .modal-instruction {
+            color: #fff9f2 !important;
+            font-size: 1.1rem !important;
+            font-weight: 600 !important;
+            margin: 0 0 4px 0 !important;
+            font-family: 'Tiro Devanagari Marathi', serif !important;
+        }
+
+        .modal-instruction-sub {
+            color: #d4af37 !important;
+            font-size: 0.85rem !important;
+            margin: 0 0 22px 0 !important;
+            font-family: 'Poppins', sans-serif !important;
+        }
+
+        /* Language Buttons List */
+        .modal-btn-stack {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 14px !important;
+            margin-bottom: 20px !important;
+        }
+
+        .modal-choice-btn {
+            background: rgba(255, 255, 255, 0.06) !important;
+            border: 1.5px solid rgba(212, 175, 55, 0.4) !important;
+            border-radius: 14px !important;
+            padding: 14px 20px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            text-decoration: none !important;
+            color: #fff9f2 !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        .modal-choice-btn:hover {
+            border-color: #f5d77f !important;
+            background: rgba(245, 215, 127, 0.2) !important;
+            transform: translateY(-3px) !important;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(245, 215, 127, 0.3) !important;
+        }
+
+        .modal-choice-btn.marathi-btn {
+            border-color: #d4af37 !important;
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.2) 0%, rgba(77, 14, 45, 0.5) 100%) !important;
+        }
+
+        .btn-flex-left {
+            display: flex !important;
+            align-items: center !important;
+            gap: 14px !important;
+            text-align: left !important;
+        }
+
+        .btn-flex-left .emoji-icon {
+            font-size: 1.6rem !important;
+        }
+
+        .btn-flex-left .primary-name {
+            font-size: 1.25rem !important;
+            font-weight: 700 !important;
+            color: #f5d77f !important;
+            font-family: 'Tiro Devanagari Marathi', 'Poppins', sans-serif !important;
+            display: block !important;
+            line-height: 1.2 !important;
+        }
+
+        .btn-flex-left .secondary-name {
+            font-size: 0.82rem !important;
+            color: #e6cebb !important;
+            font-family: 'Poppins', sans-serif !important;
+        }
+
+        .btn-arrow {
+            color: #f5d77f !important;
+            font-size: 1.1rem !important;
+            transition: transform 0.3s ease !important;
+        }
+
+        .modal-choice-btn:hover .btn-arrow {
+            transform: translateX(6px) !important;
+        }
+
+        .modal-note {
+            font-size: 0.82rem !important;
+            color: #b89c8a !important;
+            margin: 0 !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+            padding-top: 14px !important;
+            font-family: 'Tiro Devanagari Marathi', sans-serif !important;
+        }
+
+        .modal-note i {
+            color: #f5d77f !important;
+        }
+
+        /* Background blur when modal is visible */
+        .page-blur-container {
+            transition: filter 0.4s ease, transform 0.4s ease;
+        }
+
+        .page-blur-container.is-blurred {
+            filter: blur(12px) brightness(0.55);
+            pointer-events: none;
+            user-select: none;
+        }
+    </style>
+
+    <!-- Custom CSS with Cache Buster -->
+    <link rel="stylesheet" href="style.css?v=3.0">
 </head>
 
-<body class="modal-open">
+<body>
 
-    <!-- Language Selection Centered Popup Modal -->
-    <div id="langModalOverlay" class="lang-modal-overlay">
-        <div class="lang-modal-card">
-            <div class="lang-modal-header">
-                <div class="modal-logo-icon">
-                    <i class="fas fa-spa"></i>
-                </div>
-                <h2 class="modal-brand-title">माऊली ब्युटी पार्लर</h2>
-                <p class="modal-tagline">✨ सौंदर्य तुमचे, काळजी आमची ! ✨</p>
+    <!-- =========================================================
+         CENTERED LANGUAGE POPUP MODAL (First Impression Dialog)
+         ========================================================= -->
+    <div id="langModalOverlay">
+        <div class="lang-modal-box">
+            <div class="modal-icon-circle">
+                <i class="fas fa-spa"></i>
+            </div>
+            <h2 class="modal-main-title">माऊली ब्युटी पार्लर</h2>
+            <p class="modal-tagline-text">✨ सौंदर्य तुमचे, काळजी आमची ! ✨</p>
+            
+            <div class="modal-divider"></div>
+
+            <p class="modal-instruction">कृपया भाषा निवडा / Choose Language :</p>
+            <p class="modal-instruction-sub">Select your preferred language to proceed</p>
+
+            <div class="modal-btn-stack">
+                <!-- Marathi Option -->
+                <button type="button" class="modal-choice-btn marathi-btn" onclick="selectSiteLanguage('mr')">
+                    <div class="btn-flex-left">
+                        <span class="emoji-icon">🌸</span>
+                        <div>
+                            <span class="primary-name">मराठी</span>
+                            <span class="secondary-name">माऊली ब्युटी पार्लर</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-arrow-right btn-arrow"></i>
+                </button>
+
+                <!-- English Option -->
+                <button type="button" class="modal-choice-btn" onclick="selectSiteLanguage('en')">
+                    <div class="btn-flex-left">
+                        <span class="emoji-icon">✨</span>
+                        <div>
+                            <span class="primary-name">English</span>
+                            <span class="secondary-name">Mauli Beauty Parlour</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-arrow-right btn-arrow"></i>
+                </button>
+
+                <!-- Hindi Option -->
+                <button type="button" class="modal-choice-btn" onclick="selectSiteLanguage('hi')">
+                    <div class="btn-flex-left">
+                        <span class="emoji-icon">🌺</span>
+                        <div>
+                            <span class="primary-name">हिंदी</span>
+                            <span class="secondary-name">माऊली ब्यूटी पार्लर</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-arrow-right btn-arrow"></i>
+                </button>
             </div>
 
-            <div class="lang-modal-body">
-                <p class="modal-prompt-marathi">कृपया तुमची भाषा निवडा :</p>
-                <p class="modal-prompt-english">Please choose your preferred language :</p>
-
-                <div class="lang-choice-grid">
-                    <!-- Marathi Choice Button (Recommended) -->
-                    <button type="button" class="modal-lang-btn primary-marathi" data-lang="mr">
-                        <div class="lang-btn-inner">
-                            <span class="lang-flag">🌸</span>
-                            <div class="lang-btn-text">
-                                <strong class="lang-main">मराठी</strong>
-                                <span class="lang-sub">माऊली ब्युटी पार्लर</span>
-                            </div>
-                        </div>
-                        <i class="fas fa-arrow-right arrow-icon"></i>
-                    </button>
-
-                    <!-- English Choice Button -->
-                    <button type="button" class="modal-lang-btn primary-english" data-lang="en">
-                        <div class="lang-btn-inner">
-                            <span class="lang-flag">✨</span>
-                            <div class="lang-btn-text">
-                                <strong class="lang-main">English</strong>
-                                <span class="lang-sub">Mauli Beauty Parlour</span>
-                            </div>
-                        </div>
-                        <i class="fas fa-arrow-right arrow-icon"></i>
-                    </button>
-
-                    <!-- Hindi Choice Button -->
-                    <button type="button" class="modal-lang-btn primary-hindi" data-lang="hi">
-                        <div class="lang-btn-inner">
-                            <span class="lang-flag">🌺</span>
-                            <div class="lang-btn-text">
-                                <strong class="lang-main">हिंदी</strong>
-                                <span class="lang-sub">माऊली ब्यूटी पार्लर</span>
-                            </div>
-                        </div>
-                        <i class="fas fa-arrow-right arrow-icon"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div class="lang-modal-footer">
-                <p><i class="fas fa-check-circle"></i> तुम्ही नंतरही कधीही भाषा बदलू शकता (You can change language anytime later).</p>
-            </div>
+            <p class="modal-note">
+                <i class="fas fa-check-circle"></i> तुम्ही नंतरही वरून भाषा बदलू शकता (Change anytime from top menu).
+            </p>
         </div>
     </div>
 
-    <!-- Main Website Page Content Wrapper (Blurred when Modal is active) -->
-    <div id="pageContentWrapper" class="page-content-wrapper page-blurred">
+
+    <!-- =========================================================
+         MAIN WEBSITE CONTENT WRAPPER (Gets blurred by popup)
+         ========================================================= -->
+    <div id="mainPageContent" class="page-blur-container is-blurred">
 
         <!-- Top Announcement Bar -->
         <div class="top-bar">
@@ -96,9 +301,9 @@
                 <div class="lang-switcher-wrap">
                     <span class="lang-label"><i class="fas fa-globe"></i> Language:</span>
                     <div class="lang-pills">
-                        <button type="button" class="lang-btn active" data-lang="mr">मराठी</button>
-                        <button type="button" class="lang-btn" data-lang="en">English</button>
-                        <button type="button" class="lang-btn" data-lang="hi">हिंदी</button>
+                        <button type="button" class="lang-btn active" data-lang="mr" onclick="selectSiteLanguage('mr')">मराठी</button>
+                        <button type="button" class="lang-btn" data-lang="en" onclick="selectSiteLanguage('en')">English</button>
+                        <button type="button" class="lang-btn" data-lang="hi" onclick="selectSiteLanguage('hi')">हिंदी</button>
                     </div>
                 </div>
 
@@ -137,7 +342,7 @@
                 <div class="header-actions">
                     <!-- Mobile Language Dropdown -->
                     <div class="mobile-lang-select">
-                        <select id="langSelectMobile" aria-label="Select Language">
+                        <select id="langSelectMobile" aria-label="Select Language" onchange="selectSiteLanguage(this.value)">
                             <option value="mr">मराठी</option>
                             <option value="en">English</option>
                             <option value="hi">हिंदी</option>
@@ -722,8 +927,8 @@
 
     </div> <!-- End of Page Content Wrapper -->
 
-    <!-- Multi-language Script -->
-    <script src="script.js"></script>
+    <!-- Multi-language Script with Cache Buster -->
+    <script src="script.js?v=3.0"></script>
 </body>
 
 </html>

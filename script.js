@@ -488,7 +488,7 @@ const translations = {
         btn_book_now: "अभी बुक करें",
 
         pkg3_label: "रॉयल डायमंड पैकेज",
-        pkg3_title: "प्री-ब्राइडल + ब्राइडल",
+        pkg3_title: "प्री-ब्राइडल + ब्रायडल",
         pkg3_price: "रॉयल पैकेज",
         pkg3_f1: "एयरब्रश अल्ट्रा HD मेकअप",
         pkg3_f2: "शादी से पहले २ फेशियल व स्किन ग्लो",
@@ -549,16 +549,18 @@ const translations = {
 };
 
 // ==========================================================================
-// Language Selection & Popup Logic
+// Global Language Selection Function (Callable from HTML onclick directly)
 // ==========================================================================
 
-function setLanguage(lang) {
+window.selectSiteLanguage = function(lang) {
     if (!translations[lang]) lang = 'mr';
 
     // Store in localStorage
-    localStorage.setItem('mauli_lang', lang);
+    try {
+        localStorage.setItem('mauli_lang', lang);
+    } catch(e) {}
 
-    // Update active state in switcher UI
+    // Update active state in top-bar switcher buttons
     document.querySelectorAll('.lang-btn').forEach(btn => {
         if (btn.getAttribute('data-lang') === lang) {
             btn.classList.add('active');
@@ -572,7 +574,7 @@ function setLanguage(lang) {
 
     const data = translations[lang];
 
-    // Update text contents
+    // Update all text nodes
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (data[key]) {
@@ -580,7 +582,7 @@ function setLanguage(lang) {
         }
     });
 
-    // Update placeholders
+    // Update all placeholders
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         const key = el.getAttribute('data-i18n-placeholder');
         if (data[key]) {
@@ -590,75 +592,30 @@ function setLanguage(lang) {
 
     // Update document HTML lang attribute
     document.documentElement.setAttribute('lang', lang);
-}
 
-// Close Language Modal with smooth animation
-function closeLangModal() {
+    // Hide Modal and remove background blur
     const modal = document.getElementById('langModalOverlay');
-    const mainWrapper = document.getElementById('pageContentWrapper');
+    const mainContent = document.getElementById('mainPageContent');
+    
     if (modal) {
-        modal.classList.add('fade-out');
-        setTimeout(() => {
-            modal.style.display = 'none';
-        }, 300);
+        modal.classList.add('modal-hidden');
     }
-    if (mainWrapper) {
-        mainWrapper.classList.remove('page-blurred');
+    if (mainContent) {
+        mainContent.classList.remove('is-blurred');
     }
     document.body.classList.remove('modal-open');
-}
-
-// Open Language Modal
-function openLangModal() {
-    const modal = document.getElementById('langModalOverlay');
-    const mainWrapper = document.getElementById('pageContentWrapper');
-    if (modal) {
-        modal.classList.remove('fade-out');
-        modal.style.display = 'flex';
-    }
-    if (mainWrapper) {
-        mainWrapper.classList.add('page-blurred');
-    }
-    document.body.classList.add('modal-open');
-}
+};
 
 // Initialise on DOM Content Loaded
 document.addEventListener('DOMContentLoaded', () => {
+    // Check if previously chosen language exists
     const savedLang = localStorage.getItem('mauli_lang');
-
-    // Show popup whenever the user visits (or if no language selected yet)
-    // Always show blur popup for fresh visitor engagement
-    openLangModal();
-
-    if (savedLang) {
-        setLanguage(savedLang);
-    } else {
-        setLanguage('mr'); // default to Marathi
-    }
-
-    // Modal option buttons (Marathi / English / Hindi)
-    document.querySelectorAll('.modal-lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const chosenLang = btn.getAttribute('data-lang');
-            setLanguage(chosenLang);
-            closeLangModal();
-        });
-    });
-
-    // Language button event listeners in top-bar/header
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const selectedLang = btn.getAttribute('data-lang');
-            setLanguage(selectedLang);
-        });
-    });
-
-    // Mobile Language Selector
-    const mobileSelect = document.getElementById('langSelectMobile');
-    if (mobileSelect) {
-        mobileSelect.addEventListener('change', (e) => {
-            setLanguage(e.target.value);
+    if (savedLang && translations[savedLang]) {
+        // Pre-apply language text without hiding modal if visitor opens fresh
+        const data = translations[savedLang];
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (data[key]) el.innerHTML = data[key];
         });
     }
 
