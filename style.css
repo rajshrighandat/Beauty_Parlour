@@ -1,0 +1,1505 @@
+/* ==========================================================================
+   MAULI BEAUTY PARLOUR - ROYAL LUXURY THEME
+   Color Palette: Deep Wine / Maroon / Royal Gold / Warm Cream
+   ========================================================================== */
+
+:root {
+    --bg-dark-primary: #230412;
+    --bg-dark-secondary: #3b0a21;
+    --bg-dark-tertiary: #4d0e2c;
+    --bg-card: #34091e;
+    --bg-card-hover: #480f2c;
+
+    --gold-primary: #f5d77f;
+    --gold-secondary: #d4af37;
+    --gold-dark: #a67c1e;
+    --gold-gradient: linear-gradient(135deg, #ffe599 0%, #d4af37 50%, #996515 100%);
+    --gold-gradient-hover: linear-gradient(135deg, #ffffff 0%, #f5d77f 50%, #d4af37 100%);
+    --maroon-gradient: linear-gradient(180deg, #440c26 0%, #200311 100%);
+
+    --text-primary: #fff9f2;
+    --text-secondary: #e6cebb;
+    --text-muted: #b89c8a;
+    --text-dark: #2a0515;
+
+    --border-gold: rgba(212, 175, 55, 0.35);
+    --border-gold-bright: rgba(245, 215, 127, 0.7);
+    --shadow-gold: 0 10px 25px rgba(212, 175, 55, 0.18);
+    --shadow-card: 0 12px 30px rgba(0, 0, 0, 0.5);
+
+    --font-heading: 'Rozha One', 'Tiro Devanagari Marathi', serif;
+    --font-body: 'Poppins', 'Tiro Devanagari Marathi', sans-serif;
+    --font-marathi-bold: 'Yatra One', 'Rozha One', cursive;
+
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 22px;
+    --radius-full: 9999px;
+
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-dark-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image: radial-gradient(circle at 15% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 85% 60%, rgba(245, 215, 127, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 50% 90%, rgba(166, 124, 30, 0.06) 0%, transparent 50%);
+    background-attachment: fixed;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   Top Bar
+   ========================================================================== */
+.top-bar {
+    background: linear-gradient(90deg, #18020c 0%, #3e0a24 50%, #18020c 100%);
+    border-bottom: 1px solid var(--border-gold);
+    padding: 8px 0;
+    font-size: 0.88rem;
+}
+
+.top-bar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.sparkle-text {
+    color: var(--gold-primary);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-family: 'Tiro Devanagari Marathi', serif;
+}
+
+.top-contact {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: var(--text-secondary);
+}
+
+.top-contact a:hover {
+    color: var(--gold-primary);
+}
+
+.top-contact .divider {
+    color: var(--border-gold);
+}
+
+/* ==========================================================================
+   Header & Navbar
+   ========================================================================== */
+.main-header {
+    background: rgba(35, 4, 18, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border-gold);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--gold-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dark);
+    font-size: 1.4rem;
+    box-shadow: 0 0 15px rgba(245, 215, 127, 0.5);
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-title {
+    font-family: var(--font-marathi-bold);
+    font-size: 1.8rem;
+    line-height: 1.1;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 0.5px;
+}
+
+.logo-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    letter-spacing: 2px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 6px 0;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--gold-primary);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gold-gradient);
+    transition: var(--transition);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 26px;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition);
+    text-align: center;
+}
+
+.btn-gold {
+    background: var(--gold-gradient);
+    color: var(--text-dark);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+}
+
+.btn-gold:hover {
+    background: var(--gold-gradient-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(245, 215, 127, 0.6);
+}
+
+.btn-whatsapp {
+    background: #25d366;
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
+}
+
+.btn-whatsapp:hover {
+    background: #20bd5a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+    color: #ffffff;
+}
+
+.btn-outline-gold {
+    background: transparent;
+    color: var(--gold-primary);
+    border: 1.5px solid var(--gold-secondary);
+}
+
+.btn-outline-gold:hover {
+    background: rgba(212, 175, 55, 0.15);
+    border-color: var(--gold-primary);
+    transform: translateY(-2px);
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.btn-large {
+    padding: 14px 28px;
+    font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero-section {
+    position: relative;
+    padding: 60px 0 70px;
+    background: radial-gradient(circle at center top, #500f2e 0%, #230412 80%);
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-gold);
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(245, 215, 127, 0.08) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid var(--border-gold);
+    color: var(--gold-primary);
+    padding: 6px 16px;
+    border-radius: var(--radius-full);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.hero-title {
+    font-family: var(--font-marathi-bold);
+    font-size: 3.4rem;
+    line-height: 1.15;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+.hero-title .brand-highlight {
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.hero-tagline {
+    font-family: 'Tiro Devanagari Marathi', serif;
+    font-size: 1.45rem;
+    font-weight: 600;
+    color: var(--gold-primary);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.quote-ornament {
+    color: var(--gold-secondary);
+    font-size: 1.6rem;
+}
+
+.hero-description {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin-bottom: 25px;
+    line-height: 1.7;
+    max-width: 560px;
+}
+
+.hero-services-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.hero-services-tags .tag {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-gold);
+    color: var(--text-primary);
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.hero-services-tags .tag i {
+    color: var(--gold-primary);
+}
+
+.hero-cta-group {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.hero-image-card {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.image-frame {
+    position: relative;
+    width: 360px;
+    max-width: 100%;
+    border-radius: var(--radius-lg);
+    padding: 10px;
+    background: var(--maroon-gradient);
+    border: 2px solid var(--gold-secondary);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), var(--shadow-gold);
+}
+
+.hero-img {
+    width: 100%;
+    height: 440px;
+    object-fit: cover;
+    border-radius: calc(var(--radius-lg) - 6px);
+    filter: contrast(1.05) brightness(0.95);
+}
+
+.floating-stamp {
+    position: absolute;
+    bottom: -15px;
+    right: -15px;
+    width: 105px;
+    height: 105px;
+    background: var(--gold-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+    border: 2px dashed var(--bg-dark-primary);
+    animation: rotateSlow 20s linear infinite;
+}
+
+.stamp-inner {
+    width: 100%;
+    height: 100%;
+    background: var(--bg-dark-secondary);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--gold-primary);
+}
+
+.stamp-number {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.stamp-text {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* ==========================================================================
+   Poster Strip Banner (Faithful to poster layout)
+   ========================================================================== */
+.poster-banner-strip {
+    padding: 24px 0;
+    margin-top: -20px;
+    position: relative;
+    z-index: 10;
+}
+
+.strip-card {
+    background: linear-gradient(90deg, #5b1335 0%, #751a44 50%, #5b1335 100%);
+    border: 2px solid var(--gold-primary);
+    border-radius: var(--radius-md);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(245, 215, 127, 0.3);
+}
+
+.strip-decor-left,
+.strip-decor-right {
+    color: var(--gold-primary);
+    font-size: 1.3rem;
+    animation: pulseGlow 2s infinite ease-in-out;
+}
+
+.strip-text {
+    font-size: 1.15rem;
+    font-family: 'Tiro Devanagari Marathi', serif;
+    color: #fff9eb;
+    letter-spacing: 0.3px;
+}
+
+.strip-text strong {
+    color: var(--gold-primary);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: rgba(245, 215, 127, 0.4);
+    text-underline-offset: 4px;
+}
+
+/* ==========================================================================
+   Section Title Common
+   ========================================================================== */
+.section-title-wrap {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.ornament-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--gold-primary);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.ornament-divider .line {
+    width: 60px;
+    height: 1px;
+    background: var(--gold-gradient);
+    display: inline-block;
+}
+
+.section-title {
+    font-family: var(--font-marathi-bold);
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    letter-spacing: 0.5px;
+    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.5);
+}
+
+.section-subtitle {
+    font-size: 0.95rem;
+    color: var(--gold-primary);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 4px;
+}
+
+/* ==========================================================================
+   Featured Services (4 Main Poster Services)
+   ========================================================================== */
+.services-section {
+    padding: 70px 0 80px;
+    background: linear-gradient(180deg, #230412 0%, #2f071a 50%, #230412 100%);
+}
+
+.featured-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.service-card {
+    background: var(--bg-card);
+    border: 1.5px solid var(--border-gold);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-card);
+    position: relative;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--gold-primary);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), var(--shadow-gold);
+    background: var(--bg-card-hover);
+}
+
+.service-card.featured {
+    border: 2px solid var(--gold-secondary);
+    background: linear-gradient(180deg, #440c27 0%, #30071c 100%);
+}
+
+.service-img-wrap {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.service-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.service-card:hover .service-img-wrap img {
+    transform: scale(1.08);
+}
+
+.service-badge-pill {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background: var(--gold-gradient);
+    color: var(--text-dark);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 4px 14px;
+    border-radius: var(--radius-full);
+    font-family: 'Tiro Devanagari Marathi', serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.service-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.service-icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    background: rgba(245, 215, 127, 0.12);
+    border: 1px solid var(--border-gold);
+    color: var(--gold-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.service-heading {
+    font-family: 'Tiro Devanagari Marathi', serif;
+    font-size: 1.3rem;
+    color: var(--gold-primary);
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.service-desc {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.service-features {
+    margin-bottom: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 14px;
+}
+
+.service-features li {
+    font-size: 0.88rem;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.service-features li i {
+    color: var(--gold-primary);
+    font-size: 0.78rem;
+}
+
+.service-footer {
+    margin-top: auto;
+}
+
+.btn-card-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gold-primary);
+    font-weight: 600;
+    font-size: 0.92rem;
+}
+
+.btn-card-action:hover {
+    color: #ffffff;
+    gap: 12px;
+}
+
+/* ==========================================================================
+   Additional Services Box
+   ========================================================================== */
+.other-services-box {
+    background: rgba(43, 8, 25, 0.7);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius-lg);
+    padding: 35px 30px;
+    backdrop-filter: blur(10px);
+}
+
+.sub-section-title {
+    font-family: var(--font-marathi-bold);
+    font-size: 1.6rem;
+    color: var(--gold-primary);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.mini-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.mini-service-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.mini-service-item:hover {
+    background: rgba(212, 175, 55, 0.08);
+    border-color: var(--gold-primary);
+    transform: translateY(-4px);
+}
+
+.mini-icon {
+    font-size: 1.8rem;
+    color: var(--gold-primary);
+    margin-bottom: 12px;
+}
+
+.mini-service-item h4 {
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+    font-family: 'Tiro Devanagari Marathi', serif;
+}
+
+.mini-service-item p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Why Choose Us Section
+   ========================================================================== */
+.why-us-section {
+    padding: 70px 0 80px;
+    background: radial-gradient(circle at right center, #4d0e2c 0%, #230412 70%);
+    border-top: 1px solid var(--border-gold);
+    border-bottom: 1px solid var(--border-gold);
+}
+
+.why-us-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.tag-pill {
+    display: inline-block;
+    background: rgba(212, 175, 55, 0.15);
+    color: var(--gold-primary);
+    border: 1px solid var(--border-gold);
+    padding: 4px 14px;
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.why-title {
+    font-family: var(--font-marathi-bold);
+    font-size: 2.3rem;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+    line-height: 1.25;
+}
+
+.why-desc {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 30px;
+}
+
+.features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.feature-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.feature-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 50%;
+    background: var(--gold-gradient);
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35);
+}
+
+.feature-info h4 {
+    font-size: 1.1rem;
+    color: var(--gold-primary);
+    margin-bottom: 4px;
+    font-family: 'Tiro Devanagari Marathi', serif;
+}
+
+.feature-info p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.why-us-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.review-box {
+    background: var(--bg-card);
+    border: 1.5px solid var(--border-gold);
+    border-radius: var(--radius-md);
+    padding: 30px;
+    box-shadow: var(--shadow-card);
+    position: relative;
+}
+
+.review-box::before {
+    content: '❝';
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 4rem;
+    color: rgba(212, 175, 55, 0.15);
+    line-height: 1;
+}
+
+.stars {
+    color: var(--gold-primary);
+    font-size: 1rem;
+    margin-bottom: 14px;
+}
+
+.review-quote {
+    font-style: italic;
+    color: var(--text-primary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 14px;
+    font-family: 'Tiro Devanagari Marathi', serif;
+}
+
+.reviewer-name {
+    display: block;
+    color: var(--gold-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.experience-badge {
+    background: linear-gradient(135deg, #68153d 0%, #3d0922 100%);
+    border: 1.5px solid var(--gold-primary);
+    border-radius: var(--radius-md);
+    padding: 22px;
+    text-align: center;
+    box-shadow: var(--shadow-gold);
+}
+
+.exp-num {
+    display: block;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--gold-primary);
+    font-family: var(--font-marathi-bold);
+}
+
+.exp-text {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   Packages Section
+   ========================================================================== */
+.packages-section {
+    padding: 70px 0 80px;
+    background: var(--bg-dark-primary);
+}
+
+.packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    align-items: stretch;
+}
+
+.package-card {
+    background: var(--bg-card);
+    border: 1.5px solid var(--border-gold);
+    border-radius: var(--radius-lg);
+    padding: 35px 25px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: var(--transition);
+}
+
+.package-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--gold-primary);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), var(--shadow-gold);
+}
+
+.package-card.popular {
+    border: 2px solid var(--gold-primary);
+    background: linear-gradient(180deg, #4e0f2d 0%, #30081d 100%);
+    box-shadow: var(--shadow-gold);
+    transform: scale(1.03);
+}
+
+.package-card.popular:hover {
+    transform: scale(1.03) translateY(-8px);
+}
+
+.popular-tag {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold-gradient);
+    color: var(--text-dark);
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 4px 16px;
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.package-header {
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+}
+
+.pkg-label {
+    font-size: 0.85rem;
+    color: var(--gold-primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.pkg-title {
+    font-family: 'Tiro Devanagari Marathi', serif;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin: 8px 0;
+}
+
+.pkg-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--gold-primary);
+}
+
+.pkg-features {
+    margin-bottom: 30px;
+    flex-grow: 1;
+}
+
+.pkg-features li {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pkg-features li i {
+    color: var(--gold-primary);
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   Gallery Section
+   ========================================================================== */
+.gallery-section {
+    padding: 70px 0 80px;
+    background: linear-gradient(180deg, #230412 0%, #3b0a21 100%);
+    border-top: 1px solid var(--border-gold);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    height: 260px;
+    border: 1px solid var(--border-gold);
+    box-shadow: var(--shadow-card);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(35, 4, 18, 0.9) 0%, transparent 70%);
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    opacity: 0.9;
+    transition: var(--transition);
+}
+
+.gallery-overlay span {
+    font-family: 'Tiro Devanagari Marathi', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gold-primary);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+.gallery-item:hover .gallery-overlay {
+    background: linear-gradient(to top, rgba(35, 4, 18, 0.95) 0%, rgba(35, 4, 18, 0.3) 100%);
+}
+
+/* ==========================================================================
+   Contact & Booking Section
+   ========================================================================== */
+.contact-section {
+    padding: 70px 0 90px;
+    background: radial-gradient(circle at center, #420a25 0%, #1c020e 80%);
+    border-top: 1px solid var(--border-gold);
+}
+
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 40px;
+    align-items: stretch;
+}
+
+.contact-info-card {
+    background: var(--bg-card);
+    border: 1.5px solid var(--border-gold);
+    border-radius: var(--radius-lg);
+    padding: 35px 30px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-card);
+}
+
+.info-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.info-header h3 {
+    font-family: var(--font-marathi-bold);
+    font-size: 1.8rem;
+    color: var(--gold-primary);
+}
+
+.info-tag {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-family: 'Tiro Devanagari Marathi', serif;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.detail-row {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.detail-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid var(--border-gold);
+    color: var(--gold-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+.detail-row h4 {
+    font-size: 0.95rem;
+    color: var(--gold-primary);
+    margin-bottom: 2px;
+}
+
+.detail-row p,
+.detail-row a {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+}
+
+.detail-row a:hover {
+    color: var(--gold-primary);
+}
+
+.quick-call-box {
+    margin-top: auto;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    text-align: center;
+}
+
+.quick-call-box p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+/* Booking Form Card */
+.booking-form-card {
+    background: linear-gradient(180deg, #430c27 0%, #290618 100%);
+    border: 2px solid var(--gold-secondary);
+    border-radius: var(--radius-lg);
+    padding: 35px 30px;
+    box-shadow: var(--shadow-card), var(--shadow-gold);
+}
+
+.booking-form-card h3 {
+    font-family: 'Tiro Devanagari Marathi', serif;
+    font-size: 1.5rem;
+    color: var(--gold-primary);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+}
+
+.beauty-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 0.88rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.form-group label i {
+    color: var(--gold-primary);
+    font-size: 0.8rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    background: rgba(20, 2, 10, 0.8);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.92rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--gold-primary);
+    box-shadow: 0 0 10px rgba(245, 215, 127, 0.4);
+    background: rgba(30, 4, 16, 0.95);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.form-group select option {
+    background: var(--bg-dark-secondary);
+    color: var(--text-primary);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.main-footer {
+    background: #14010a;
+    border-top: 1px solid var(--border-gold);
+    padding: 60px 0 0;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--gold-primary);
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+}
+
+.footer-logo h2 {
+    font-family: var(--font-marathi-bold);
+    font-size: 1.8rem;
+}
+
+.footer-tagline {
+    color: var(--gold-primary);
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-family: 'Tiro Devanagari Marathi', serif;
+}
+
+.footer-note {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    max-width: 360px;
+}
+
+.footer-links h4,
+.footer-services h4 {
+    color: var(--gold-primary);
+    font-size: 1.1rem;
+    margin-bottom: 18px;
+    font-family: 'Tiro Devanagari Marathi', serif;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.footer-links h4::after,
+.footer-services h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 35px;
+    height: 2px;
+    background: var(--gold-primary);
+}
+
+.footer-links li,
+.footer-services li {
+    margin-bottom: 10px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+    color: var(--gold-primary);
+    padding-left: 5px;
+}
+
+.footer-bottom {
+    background: #0d0107;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 20px 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.copyright-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* ==========================================================================
+   Floating Sticky Action Buttons (Mobile / Desktop)
+   ========================================================================== */
+.floating-action-buttons {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 999;
+}
+
+.float-btn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    color: #ffffff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+    transition: var(--transition);
+}
+
+.float-whatsapp {
+    background: #25d366;
+    animation: floatBounce 3s infinite ease-in-out;
+}
+
+.float-call {
+    background: var(--gold-gradient);
+    color: var(--text-dark);
+}
+
+.float-btn:hover {
+    transform: scale(1.12);
+}
+
+/* ==========================================================================
+   Keyframe Animations
+   ========================================================================== */
+@keyframes floatBounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+}
+
+@keyframes rotateSlow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ==========================================================================
+   Responsive Media Queries
+   ========================================================================== */
+@media (max-width: 992px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 2.8rem;
+    }
+
+    .hero-tagline {
+        justify-content: center;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-services-tags {
+        justify-content: center;
+    }
+
+    .hero-cta-group {
+        justify-content: center;
+    }
+
+    .why-us-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-bar-content {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .top-contact {
+        display: none;
+    }
+
+    .nav-links {
+        display: none;
+        /* simple clean mobile menu fallback without heavy JS */
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .strip-card {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .strip-decor-left,
+    .strip-decor-right {
+        display: none;
+    }
+
+    .strip-text {
+        font-size: 1rem;
+    }
+}
