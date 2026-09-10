@@ -63,6 +63,10 @@ body {
     background-attachment: fixed;
 }
 
+body.modal-open {
+    overflow: hidden;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -86,12 +90,220 @@ ul {
 }
 
 /* ==========================================================================
-   Top Bar
+   Page Content Wrapper & Blur Effect
+   ========================================================================== */
+.page-content-wrapper {
+    transition: filter 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
+}
+
+.page-content-wrapper.page-blurred {
+    filter: blur(10px) brightness(0.6);
+    pointer-events: none;
+    user-select: none;
+    transform: scale(0.99);
+}
+
+/* ==========================================================================
+   Language Selection Modal (Centered Popup)
+   ========================================================================== */
+.lang-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(18, 2, 9, 0.78);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 1;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.lang-modal-overlay.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.lang-modal-card {
+    background: linear-gradient(180deg, #440c26 0%, #240413 100%);
+    border: 2px solid var(--gold-primary);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 520px;
+    padding: 35px 30px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 35px rgba(245, 215, 127, 0.3);
+    text-align: center;
+    position: relative;
+    animation: modalPopIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalPopIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.85) translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.lang-modal-header {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.modal-logo-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+    background: var(--gold-gradient);
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: 0 0 20px rgba(245, 215, 127, 0.6);
+}
+
+.modal-brand-title {
+    font-family: var(--font-marathi-bold);
+    font-size: 2.1rem;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 6px;
+    line-height: 1.2;
+}
+
+.modal-tagline {
+    font-size: 0.95rem;
+    color: var(--gold-primary);
+    font-family: 'Tiro Devanagari Marathi', serif;
+    letter-spacing: 0.5px;
+}
+
+.lang-modal-body {
+    margin-bottom: 25px;
+}
+
+.modal-prompt-marathi {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+    font-family: 'Tiro Devanagari Marathi', serif;
+}
+
+.modal-prompt-english {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 22px;
+}
+
+.lang-choice-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.modal-lang-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1.5px solid var(--border-gold);
+    border-radius: var(--radius-md);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--text-primary);
+}
+
+.modal-lang-btn:hover {
+    border-color: var(--gold-primary);
+    background: rgba(245, 215, 127, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(245, 215, 127, 0.25);
+}
+
+.modal-lang-btn.primary-marathi {
+    border-color: var(--gold-secondary);
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0.18) 0%, rgba(68, 12, 38, 0.4) 100%);
+}
+
+.modal-lang-btn.primary-marathi:hover {
+    background: linear-gradient(90deg, rgba(245, 215, 127, 0.28) 0%, rgba(100, 20, 58, 0.6) 100%);
+    border-color: var(--gold-primary);
+}
+
+.lang-btn-inner {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-align: left;
+}
+
+.lang-flag {
+    font-size: 1.5rem;
+}
+
+.lang-btn-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.lang-btn-text .lang-main {
+    font-size: 1.25rem;
+    color: var(--gold-primary);
+    font-family: 'Tiro Devanagari Marathi', serif;
+    line-height: 1.2;
+}
+
+.lang-btn-text .lang-sub {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+.arrow-icon {
+    color: var(--gold-primary);
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+.modal-lang-btn:hover .arrow-icon {
+    transform: translateX(5px);
+}
+
+.lang-modal-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 14px;
+}
+
+.lang-modal-footer p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.lang-modal-footer p i {
+    color: var(--gold-primary);
+}
+
+/* ==========================================================================
+   Top Bar & Language Switcher
    ========================================================================== */
 .top-bar {
     background: linear-gradient(90deg, #18020c 0%, #3e0a24 50%, #18020c 100%);
     border-bottom: 1px solid var(--border-gold);
-    padding: 8px 0;
+    padding: 6px 0;
     font-size: 0.88rem;
 }
 
@@ -100,7 +312,7 @@ ul {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
 }
 
 .sparkle-text {
@@ -108,6 +320,52 @@ ul {
     font-weight: 600;
     letter-spacing: 0.5px;
     font-family: 'Tiro Devanagari Marathi', serif;
+}
+
+/* Language Switcher */
+.lang-switcher-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.35);
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-gold);
+}
+
+.lang-label {
+    font-size: 0.78rem;
+    color: var(--gold-primary);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.lang-pills {
+    display: flex;
+    gap: 4px;
+}
+
+.lang-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.lang-btn:hover {
+    color: var(--gold-primary);
+}
+
+.lang-btn.active {
+    background: var(--gold-gradient);
+    color: var(--text-dark);
+    box-shadow: 0 2px 8px rgba(245, 215, 127, 0.4);
 }
 
 .top-contact {
@@ -143,7 +401,7 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 14px 0;
+    padding: 12px 0;
 }
 
 .brand-logo {
@@ -220,6 +478,45 @@ ul {
 .nav-links a:hover::after,
 .nav-links a.active::after {
     width: 100%;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mobile-lang-select {
+    display: none;
+}
+
+.mobile-lang-select select {
+    background: rgba(43, 8, 25, 0.9);
+    color: var(--gold-primary);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius-sm);
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--border-gold);
+    color: var(--gold-primary);
+    font-size: 1.25rem;
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.mobile-menu-btn:hover {
+    background: rgba(245, 215, 127, 0.15);
 }
 
 /* ==========================================================================
@@ -465,7 +762,7 @@ ul {
 }
 
 /* ==========================================================================
-   Poster Strip Banner (Faithful to poster layout)
+   Poster Strip Banner
    ========================================================================== */
 .poster-banner-strip {
     padding: 24px 0;
@@ -1476,9 +1773,40 @@ ul {
         display: none;
     }
 
+    .mobile-menu-btn {
+        display: inline-flex;
+    }
+
+    .mobile-lang-select {
+        display: block;
+    }
+
+    .header-book-btn {
+        display: none;
+    }
+
     .nav-links {
         display: none;
-        /* simple clean mobile menu fallback without heavy JS */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(28, 3, 14, 0.98);
+        border-bottom: 2px solid var(--gold-primary);
+        padding: 20px 25px;
+        gap: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    }
+
+    .nav-links.nav-open {
+        display: flex;
+    }
+
+    .nav-links a {
+        font-size: 1.05rem;
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(245, 215, 127, 0.1);
     }
 
     .hero-title {
@@ -1501,5 +1829,13 @@ ul {
 
     .strip-text {
         font-size: 1rem;
+    }
+
+    .lang-modal-card {
+        padding: 25px 20px;
+    }
+
+    .modal-brand-title {
+        font-size: 1.7rem;
     }
 }

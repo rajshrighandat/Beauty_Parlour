@@ -22,618 +22,708 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="modal-open">
 
-    <!-- Top Announcement Bar -->
-    <div class="top-bar">
-        <div class="container top-bar-content">
-            <span class="sparkle-text">✨ सौंदर्य तुमचे, काळजी आमची ! ✨</span>
-            <div class="top-contact">
-                <a href="tel:+919876543210"><i class="fas fa-phone-alt"></i> +91 98765 43210</a>
-                <span class="divider">|</span>
-                <span><i class="fas fa-clock"></i> सकाळी ९:०० ते रात्री ८:००</span>
+    <!-- Language Selection Centered Popup Modal -->
+    <div id="langModalOverlay" class="lang-modal-overlay">
+        <div class="lang-modal-card">
+            <div class="lang-modal-header">
+                <div class="modal-logo-icon">
+                    <i class="fas fa-spa"></i>
+                </div>
+                <h2 class="modal-brand-title">माऊली ब्युटी पार्लर</h2>
+                <p class="modal-tagline">✨ सौंदर्य तुमचे, काळजी आमची ! ✨</p>
+            </div>
+
+            <div class="lang-modal-body">
+                <p class="modal-prompt-marathi">कृपया तुमची भाषा निवडा :</p>
+                <p class="modal-prompt-english">Please choose your preferred language :</p>
+
+                <div class="lang-choice-grid">
+                    <!-- Marathi Choice Button (Recommended) -->
+                    <button type="button" class="modal-lang-btn primary-marathi" data-lang="mr">
+                        <div class="lang-btn-inner">
+                            <span class="lang-flag">🌸</span>
+                            <div class="lang-btn-text">
+                                <strong class="lang-main">मराठी</strong>
+                                <span class="lang-sub">माऊली ब्युटी पार्लर</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-arrow-right arrow-icon"></i>
+                    </button>
+
+                    <!-- English Choice Button -->
+                    <button type="button" class="modal-lang-btn primary-english" data-lang="en">
+                        <div class="lang-btn-inner">
+                            <span class="lang-flag">✨</span>
+                            <div class="lang-btn-text">
+                                <strong class="lang-main">English</strong>
+                                <span class="lang-sub">Mauli Beauty Parlour</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-arrow-right arrow-icon"></i>
+                    </button>
+
+                    <!-- Hindi Choice Button -->
+                    <button type="button" class="modal-lang-btn primary-hindi" data-lang="hi">
+                        <div class="lang-btn-inner">
+                            <span class="lang-flag">🌺</span>
+                            <div class="lang-btn-text">
+                                <strong class="lang-main">हिंदी</strong>
+                                <span class="lang-sub">माऊली ब्यूटी पार्लर</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-arrow-right arrow-icon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="lang-modal-footer">
+                <p><i class="fas fa-check-circle"></i> तुम्ही नंतरही कधीही भाषा बदलू शकता (You can change language anytime later).</p>
             </div>
         </div>
     </div>
 
-    <!-- Navigation Header -->
-    <header class="main-header">
-        <div class="container header-container">
-            <a href="#" class="brand-logo">
-                <div class="logo-icon">
-                    <i class="fas fa-spa"></i>
-                </div>
-                <div class="logo-text">
-                    <h1 class="logo-title">माऊली</h1>
-                    <span class="logo-subtitle">ब्युटी पार्लर</span>
-                </div>
-            </a>
+    <!-- Main Website Page Content Wrapper (Blurred when Modal is active) -->
+    <div id="pageContentWrapper" class="page-content-wrapper page-blurred">
 
-            <nav class="navbar">
-                <ul class="nav-links">
-                    <li><a href="#home" class="active">मुख्यपृष्ठ</a></li>
-                    <li><a href="#services">आमच्या सेवा</a></li>
-                    <li><a href="#speciality">वैशिष्ट्ये</a></li>
-                    <li><a href="#packages">पॅकेजेस</a></li>
-                    <li><a href="#gallery">गॅलरी</a></li>
-                    <li><a href="#contact">संपर्क</a></li>
-                </ul>
-            </nav>
+        <!-- Top Announcement Bar -->
+        <div class="top-bar">
+            <div class="container top-bar-content">
+                <span class="sparkle-text" data-i18n="top_sparkle">✨ सौंदर्य तुमचे, काळजी आमची ! ✨</span>
+                
+                <!-- Language Switcher in Top Bar -->
+                <div class="lang-switcher-wrap">
+                    <span class="lang-label"><i class="fas fa-globe"></i> Language:</span>
+                    <div class="lang-pills">
+                        <button type="button" class="lang-btn active" data-lang="mr">मराठी</button>
+                        <button type="button" class="lang-btn" data-lang="en">English</button>
+                        <button type="button" class="lang-btn" data-lang="hi">हिंदी</button>
+                    </div>
+                </div>
 
-            <div class="header-actions">
-                <a href="#contact" class="btn btn-gold"><i class="far fa-calendar-check"></i> अपॉइंटमेंट बुक करा</a>
+                <div class="top-contact">
+                    <a href="tel:+919876543210"><i class="fas fa-phone-alt"></i> +91 98765 43210</a>
+                    <span class="divider">|</span>
+                    <span><i class="fas fa-clock"></i> <span data-i18n="top_timings">सकाळी ९:०० ते रात्री ८:००</span></span>
+                </div>
             </div>
         </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="hero-overlay"></div>
-        <div class="container hero-container">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <i class="fas fa-crown"></i> खास महिलांसाठी परिपूर्ण सौंदर्य सेवा
-                </div>
-                <h1 class="hero-title">
-                    <span class="brand-highlight">माऊली</span> ब्युटी पार्लर
-                </h1>
-                <p class="hero-tagline">
-                    <span class="quote-ornament">❝</span> सौंदर्य तुमचे, काळजी आमची ! <span
-                        class="quote-ornament">❞</span>
-                </p>
-                <p class="hero-description">
-                    तुमच्या आयुष्यातील प्रत्येक खास क्षणासाठी सर्वोत्तम ब्रायडल मेकअप, पार्टी लुक आणि त्वचेची खास काळजी.
-                    आधुनिक तंत्रज्ञान व दर्जेदार उत्पादनांसह तुमचं सौंदर्य अधिक खुलवा.
-                </p>
+        <!-- Navigation Header -->
+        <header class="main-header">
+            <div class="container header-container">
+                <a href="#" class="brand-logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1 class="logo-title" data-i18n="brand_name">माऊली</h1>
+                        <span class="logo-subtitle" data-i18n="brand_sub">ब्युटी पार्लर</span>
+                    </div>
+                </a>
 
-                <!-- Quick Services Badges -->
-                <div class="hero-services-tags">
-                    <span class="tag"><i class="fas fa-check-circle"></i> ब्रायडल मेकअप</span>
-                    <span class="tag"><i class="fas fa-check-circle"></i> मेकअप ऑर्डर</span>
-                    <span class="tag"><i class="fas fa-check-circle"></i> साइडर मेकअप</span>
-                    <span class="tag"><i class="fas fa-check-circle"></i> ब्लिच व फेशियल</span>
-                </div>
+                <nav class="navbar">
+                    <ul class="nav-links">
+                        <li><a href="#home" class="active" data-i18n="nav_home">मुख्यपृष्ठ</a></li>
+                        <li><a href="#services" data-i18n="nav_services">आमच्या सेवा</a></li>
+                        <li><a href="#speciality" data-i18n="nav_speciality">वैशिष्ट्ये</a></li>
+                        <li><a href="#packages" data-i18n="nav_packages">पॅकेजेस</a></li>
+                        <li><a href="#gallery" data-i18n="nav_gallery">गॅलरी</a></li>
+                        <li><a href="#contact" data-i18n="nav_contact">संपर्क</a></li>
+                    </ul>
+                </nav>
 
-                <div class="hero-cta-group">
-                    <a href="https://wa.me/919876543210?text=नमस्कार,%20मला%20ब्युटी%20पार्लर%20सेवेबद्दल%20चौकशी%20करायची%20आहे."
-                        target="_blank" class="btn btn-whatsapp">
-                        <i class="fab fa-whatsapp"></i> व्हॉट्सॲपवर संपर्क करा
+                <div class="header-actions">
+                    <!-- Mobile Language Dropdown -->
+                    <div class="mobile-lang-select">
+                        <select id="langSelectMobile" aria-label="Select Language">
+                            <option value="mr">मराठी</option>
+                            <option value="en">English</option>
+                            <option value="hi">हिंदी</option>
+                        </select>
+                    </div>
+                    
+                    <a href="#contact" class="btn btn-gold header-book-btn">
+                        <i class="far fa-calendar-check"></i> <span data-i18n="btn_book_appt">अपॉइंटमेंट बुक करा</span>
                     </a>
-                    <a href="#services" class="btn btn-outline-gold">
-                        <i class="fas fa-sparkles"></i> सेवांची माहिती पहा
-                    </a>
+
+                    <!-- Mobile Menu Hamburger -->
+                    <button class="mobile-menu-btn" id="menuToggle" aria-label="Toggle Menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
                 </div>
             </div>
+        </header>
 
-            <div class="hero-image-card">
-                <div class="image-frame">
-                    <div class="glowing-border"></div>
-                    <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=700&q=80"
-                        alt="Bridal Indian Makeup" class="hero-img">
-                    <div class="floating-stamp">
-                        <div class="stamp-inner">
-                            <span class="stamp-number">100%</span>
-                            <span class="stamp-text">समाधान हमी</span>
-                        </div>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <i class="fas fa-crown"></i> <span data-i18n="hero_badge">खास महिलांसाठी परिपूर्ण सौंदर्य सेवा</span>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Highlight Banner from Poster -->
-    <section class="poster-banner-strip">
-        <div class="container">
-            <div class="strip-card">
-                <div class="strip-decor-left"><i class="fas fa-gem"></i></div>
-                <p class="strip-text">
-                    सर्व प्रकारच्या <strong>ब्रायडल ऑर्डर</strong>, <strong>मेकअप ऑर्डर</strong>, <strong>साइडर
-                        मेकअप</strong>, <strong>ब्लिच फेशियल</strong> स्वीकारले जातील.
-                </p>
-                <div class="strip-decor-right"><i class="fas fa-gem"></i></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services-section">
-        <div class="container">
-            <div class="section-title-wrap">
-                <div class="ornament-divider">
-                    <span>❖</span><span class="line"></span><span>✦</span><span class="line"></span><span>❖</span>
-                </div>
-                <h2 class="section-title">आमच्या मुख्य सेवा</h2>
-                <p class="section-subtitle">Our Premium Beauty & Makeup Services</p>
-            </div>
-
-            <!-- Primary 4 Poster Services in Visual Cards -->
-            <div class="featured-services-grid">
-
-                <!-- Service 1: Bridal Makeup -->
-                <div class="service-card featured">
-                    <div class="service-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1595955793665-c18c5c53ed11?auto=format&fit=crop&w=600&q=80"
-                            alt="ब्रायडल मेकअप">
-                        <span class="service-badge-pill">ब्रायडल मेकअप</span>
-                    </div>
-                    <div class="service-body">
-                        <div class="service-icon-box"><i class="fas fa-crown"></i></div>
-                        <h3 class="service-heading">सर्व प्रकारच्या ब्रायडल ऑर्डर</h3>
-                        <p class="service-desc">
-                            लग्नाच्या शुभदिनी वधूला द्या मनमोहक आणि राजेशाही लुक. एचडी मेकअप, एअरब्रश फिनिश, हेअरस्टाइल
-                            आणि साडी ड्रॅपिंगसह परिपूर्ण पॅकेज.
-                        </p>
-                        <ul class="service-features">
-                            <li><i class="fas fa-check"></i> HD व Airbrush ब्रायडल मेकअप</li>
-                            <li><i class="fas fa-check"></i> साडी ड्रॅपिंग व दागिने सेटिंग</li>
-                            <li><i class="fas fa-check"></i> वधूसाठी प्री-ब्रायडल स्किनकेअर</li>
-                        </ul>
-                        <div class="service-footer">
-                            <a href="https://wa.me/919876543210?text=मला%20ब्रायडल%20मेकअपबद्दल%20माहिती%20हवी%20आहे"
-                                class="btn-card-action">चौकशी करा <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 2: Makeup Orders -->
-                <div class="service-card">
-                    <div class="service-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80"
-                            alt="मेकअप ऑर्डर">
-                        <span class="service-badge-pill">मेकअप ऑर्डर</span>
-                    </div>
-                    <div class="service-body">
-                        <div class="service-icon-box"><i class="fas fa-magic"></i></div>
-                        <h3 class="service-heading">मेकअप ऑर्डर (सर्व समारंभांसाठी)</h3>
-                        <p class="service-desc">
-                            साखरपुडा, रिसेप्शन, डोहाळे जेवण, वाढदिवस आणि सर्व प्रकारच्या कौटुंबिक सोहळ्यांसाठी आकर्षक व
-                            प्रदीर्घ काळ टिकणारा प्रोफेशनल मेकअप.
-                        </p>
-                        <ul class="service-features">
-                            <li><i class="fas fa-check"></i> साखरपुडा व रिसेप्शन मेकअप</li>
-                            <li><i class="fas fa-check"></i> फोटोशूट व इव्हेंट मेकअप</li>
-                            <li><i class="fas fa-check"></i> वॉटरप्रूफ आणि ग्लोइंग फिनिश</li>
-                        </ul>
-                        <div class="service-footer">
-                            <a href="https://wa.me/919876543210?text=मला%20मेकअप%20ऑर्डरबद्दल%20माहिती%20हवी%20आहे"
-                                class="btn-card-action">चौकशी करा <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 3: Sider Makeup -->
-                <div class="service-card">
-                    <div class="service-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80"
-                            alt="साइडर मेकअप">
-                        <span class="service-badge-pill">साइडर मेकअप</span>
-                    </div>
-                    <div class="service-body">
-                        <div class="service-icon-box"><i class="fas fa-heart"></i></div>
-                        <h3 class="service-heading">साइडर मेकअप (पार्टी व फॅमिली लुक)</h3>
-                        <p class="service-desc">
-                            वधूच्या बहिणी, मैत्रिणी व नातेवाईकांसाठी एलिगंट साइडर मेकअप. नैसर्गिक चमक आणि ट्रेंडी
-                            हेअरस्टाइल्ससह सर्वांचे लक्ष वेधून घेणारा लुक.
-                        </p>
-                        <ul class="service-features">
-                            <li><i class="fas fa-check"></i> ग्रुप व फॅमिली मेकअप बुकिंग</li>
-                            <li><i class="fas fa-check"></i> आकर्षक हेअरस्टाईल व फ्लॉवर सेटिंग</li>
-                            <li><i class="fas fa-check"></i> नॅचरल व पार्टी ग्लो</li>
-                        </ul>
-                        <div class="service-footer">
-                            <a href="https://wa.me/919876543210?text=मला%20साइडर%20मेकअपबद्दल%20माहिती%20हवी%20आहे"
-                                class="btn-card-action">चौकशी करा <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service 4: Bleach & Facial -->
-                <div class="service-card">
-                    <div class="service-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80"
-                            alt="ब्लिच फेशियल">
-                        <span class="service-badge-pill">ब्लिच फेशियल</span>
-                    </div>
-                    <div class="service-body">
-                        <div class="service-icon-box"><i class="fas fa-leaf"></i></div>
-                        <h3 class="service-heading">ब्लिच व फेशियल स्किनकेअर</h3>
-                        <p class="service-desc">
-                            त्वचेचा तजेला परत मिळवण्यासाठी गोल्ड फेशियल, डायमंड ग्लो, डी-टॅन, फ्रूट फेशियल आणि दर्जेदार
-                            ब्लिच ट्रीटमेंट.
-                        </p>
-                        <ul class="service-features">
-                            <li><i class="fas fa-check"></i> स्किन ब्राईटनिंग व डी-टॅन फेशियल</li>
-                            <li><i class="fas fa-check"></i> गोल्ड, डायमंड व पर्ल फेशियल्स</li>
-                            <li><i class="fas fa-check"></i> सेफ आणि हर्बल ब्लिच केअर</li>
-                        </ul>
-                        <div class="service-footer">
-                            <a href="https://wa.me/919876543210?text=मला%20ब्लिच%20फेशियल%20ट्रीटमेंटबद्दल%20माहिती%20हवी%20आहे"
-                                class="btn-card-action">चौकशी करा <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Additional Salon Services Grid -->
-            <div class="other-services-box">
-                <h3 class="sub-section-title"><i class="fas fa-sparkles"></i> इतर पार्लर सेवा</h3>
-                <div class="mini-services-grid">
-                    <div class="mini-service-item">
-                        <div class="mini-icon"><i class="fas fa-cut"></i></div>
-                        <h4>हेअर कटिंग व स्टायलिंग</h4>
-                        <p>लेयर, फेदर, बॉब आणि ट्रेंडी कट्स</p>
-                    </div>
-                    <div class="mini-service-item">
-                        <div class="mini-icon"><i class="fas fa-spa"></i></div>
-                        <h4>हेअर स्पा व ट्रीटमेंट</h4>
-                        <p>केसांना पोषण आणि रेशमी मऊपणा</p>
-                    </div>
-                    <div class="mini-service-item">
-                        <div class="mini-icon"><i class="fas fa-hand-sparkles"></i></div>
-                        <h4>मॅनिक्युअर व पॅडिक्युअर</h4>
-                        <p>हात आणि पायांची सखोल स्वच्छता व काळजी</p>
-                    </div>
-                    <div class="mini-service-item">
-                        <div class="mini-icon"><i class="fas fa-feather-alt"></i></div>
-                        <h4>थ्रेडिंग व वॅक्सिंग</h4>
-                        <p>आयब्रो शेपिंग आणि स्मूथ वॅक्सिंग सेवा</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Us Section -->
-    <section id="speciality" class="why-us-section">
-        <div class="container">
-            <div class="why-us-grid">
-                <div class="why-us-text">
-                    <span class="tag-pill">आमची खासियत</span>
-                    <h2 class="why-title">माऊली ब्युटी पार्लर का निवडावे?</h2>
-                    <p class="why-desc">
-                        आम्ही केवळ सेवा देत नाही, तर प्रत्येक महिलेच्या व्यक्तिमत्त्वाला साजेसा सुंदर आणि आत्मविश्वास
-                        वाढवणारा लुक देतो.
+                    <h1 class="hero-title">
+                        <span class="brand-highlight" data-i18n="hero_title_prefix">माऊली</span> <span data-i18n="hero_title_suffix">ब्युटी पार्लर</span>
+                    </h1>
+                    <p class="hero-tagline">
+                        <span class="quote-ornament">❝</span> <span data-i18n="hero_tagline">सौंदर्य तुमचे, काळजी आमची !</span> <span class="quote-ornament">❞</span>
+                    </p>
+                    <p class="hero-description" data-i18n="hero_desc">
+                        तुमच्या आयुष्यातील प्रत्येक खास क्षणासाठी सर्वोत्तम ब्रायडल मेकअप, पार्टी लुक आणि त्वचेची खास काळजी.
+                        आधुनिक तंत्रज्ञान व दर्जेदार उत्पादनांसह तुमचं सौंदर्य अधिक खुलवा.
                     </p>
 
-                    <div class="features-list">
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-award"></i></div>
-                            <div class="feature-info">
-                                <h4>अनुभवी ब्युटीशियन व मेकअप आर्टिस्ट</h4>
-                                <p>प्रशिक्षित व ट्रेंडनुसार आधुनिक तंत्रज्ञानाची जाण असणारी तज्ज्ञ टीम.</p>
-                            </div>
-                        </div>
+                    <!-- Quick Services Badges -->
+                    <div class="hero-services-tags">
+                        <span class="tag"><i class="fas fa-check-circle"></i> <span data-i18n="tag_bridal">ब्रायडल मेकअप</span></span>
+                        <span class="tag"><i class="fas fa-check-circle"></i> <span data-i18n="tag_makeup">मेकअप ऑर्डर</span></span>
+                        <span class="tag"><i class="fas fa-check-circle"></i> <span data-i18n="tag_sider">साइडर मेकअप</span></span>
+                        <span class="tag"><i class="fas fa-check-circle"></i> <span data-i18n="tag_facial">ब्लिच व फेशियल</span></span>
+                    </div>
 
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-pump-soap"></i></div>
-                            <div class="feature-info">
-                                <h4>१००% ब्रँडेड व सुरक्षित उत्पादने</h4>
-                                <p>त्वचेला कोणतेही नुकसान न पोहोचवणारी आंतरराष्ट्रीय दर्जाची कॉस्मेटिक्स.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-home"></i></div>
-                            <div class="feature-info">
-                                <h4>ब्रायडल ऑर्डरसाठी होम / व्हेन्यू व्हिजिट</h4>
-                                <p>लग्नाच्या दिवशी तुमच्या सोयीनुसार हॉल किंवा घरी वेळेवर हजर राहून सेवा.</p>
-                            </div>
-                        </div>
-
-                        <div class="feature-item">
-                            <div class="feature-icon"><i class="fas fa-tags"></i></div>
-                            <div class="feature-info">
-                                <h4>वाजवी दर आणि उत्कृष्ट गुणवत्ता</h4>
-                                <p>सर्व बजेटमध्ये उपलब्ध परवडणारे आणि दर्जेदार सौंदर्य पॅकेजेस.</p>
-                            </div>
-                        </div>
+                    <div class="hero-cta-group">
+                        <a href="https://wa.me/919876543210?text=नमस्कार,%20मला%20ब्युटी%20पार्लर%20सेवेबद्दल%20चौकशी%20करायची%20आहे."
+                            target="_blank" class="btn btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i> <span data-i18n="btn_whatsapp">व्हॉट्सॲपवर संपर्क करा</span>
+                        </a>
+                        <a href="#services" class="btn btn-outline-gold">
+                            <i class="fas fa-sparkles"></i> <span data-i18n="btn_view_services">सेवांची माहिती पहा</span>
+                        </a>
                     </div>
                 </div>
 
-                <div class="why-us-visual">
-                    <div class="review-box">
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                <div class="hero-image-card">
+                    <div class="image-frame">
+                        <div class="glowing-border"></div>
+                        <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=700&q=80"
+                            alt="Bridal Indian Makeup" class="hero-img">
+                        <div class="floating-stamp">
+                            <div class="stamp-inner">
+                                <span class="stamp-number">100%</span>
+                                <span class="stamp-text" data-i18n="stamp_satisfaction">समाधान हमी</span>
+                            </div>
                         </div>
-                        <p class="review-quote">"माऊली ब्युटी पार्लरमध्ये केलेला ब्रायडल मेकअप अप्रतिम होता. लग्नात
-                            सर्वांनी लुकचे खूप कौतुक केले!"</p>
-                        <span class="reviewer-name">- तृप्ती पाटील (आनंदी ग्राहक)</span>
-                    </div>
-                    <div class="experience-badge">
-                        <span class="exp-num">५००+</span>
-                        <span class="exp-text">यशस्वी ब्रायडल व मेकअप ऑर्डर्स</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Bridal Packages Section -->
-    <section id="packages" class="packages-section">
-        <div class="container">
-            <div class="section-title-wrap">
-                <div class="ornament-divider">
-                    <span>❖</span><span class="line"></span><span>✦</span><span class="line"></span><span>❖</span>
+        <!-- Highlight Banner from Poster -->
+        <section class="poster-banner-strip">
+            <div class="container">
+                <div class="strip-card">
+                    <div class="strip-decor-left"><i class="fas fa-gem"></i></div>
+                    <p class="strip-text" data-i18n="strip_text">
+                        सर्व प्रकारच्या <strong>ब्रायडल ऑर्डर</strong>, <strong>मेकअप ऑर्डर</strong>, <strong>साइडर मेकअप</strong>, <strong>ब्लिच फेशियल</strong> स्वीकारले जातील.
+                    </p>
+                    <div class="strip-decor-right"><i class="fas fa-gem"></i></div>
                 </div>
-                <h2 class="section-title">खास ब्रायडल पॅकेजेस</h2>
-                <p class="section-subtitle">Specially Crafted Packages for Your Special Day</p>
             </div>
+        </section>
 
-            <div class="packages-grid">
-
-                <!-- Package 1 -->
-                <div class="package-card">
-                    <div class="package-header">
-                        <span class="pkg-label">सिल्व्हर पॅकेज</span>
-                        <h3 class="pkg-title">पार्टी & साइडर लुक</h3>
-                        <div class="pkg-price">खास दर</div>
+        <!-- Services Section -->
+        <section id="services" class="services-section">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <div class="ornament-divider">
+                        <span>❖</span><span class="line"></span><span>✦</span><span class="line"></span><span>❖</span>
                     </div>
-                    <ul class="pkg-features">
-                        <li><i class="fas fa-check-circle"></i> पार्टी एचडी मेकअप</li>
-                        <li><i class="fas fa-check-circle"></i> हेअर स्टाईल व ॲक्सेसरीज</li>
-                        <li><i class="fas fa-check-circle"></i> साडी / ड्रेस ड्रेपिंग</li>
-                        <li><i class="fas fa-check-circle"></i> सिम्पल आय मेकअप</li>
+                    <h2 class="section-title" data-i18n="services_title">आमच्या मुख्य सेवा</h2>
+                    <p class="section-subtitle" data-i18n="services_subtitle">Our Premium Beauty & Makeup Services</p>
+                </div>
+
+                <!-- Primary 4 Poster Services in Visual Cards -->
+                <div class="featured-services-grid">
+
+                    <!-- Service 1: Bridal Makeup -->
+                    <div class="service-card featured">
+                        <div class="service-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1595955793665-c18c5c53ed11?auto=format&fit=crop&w=600&q=80"
+                                alt="ब्रायडल मेकअप">
+                            <span class="service-badge-pill" data-i18n="s1_badge">ब्रायडल मेकअप</span>
+                        </div>
+                        <div class="service-body">
+                            <div class="service-icon-box"><i class="fas fa-crown"></i></div>
+                            <h3 class="service-heading" data-i18n="s1_title">सर्व प्रकारच्या ब्रायडल ऑर्डर</h3>
+                            <p class="service-desc" data-i18n="s1_desc">
+                                लग्नाच्या शुभदिनी वधूला द्या मनमोहक आणि राजेशाही लुक. एचडी मेकअप, एअरब्रश फिनिश, हेअरस्टाइल
+                                आणि साडी ड्रॅपिंगसह परिपूर्ण पॅकेज.
+                            </p>
+                            <ul class="service-features">
+                                <li><i class="fas fa-check"></i> <span data-i18n="s1_f1">HD व Airbrush ब्रायडल मेकअप</span></li>
+                                <li><i class="fas fa-check"></i> <span data-i18n="s1_f2">साडी ड्रॅपिंग व दागिने सेटिंग</span></li>
+                                <li><i class="fas fa-check"></i> <span data-i18n="s1_f3">वधूसाठी प्री-ब्रायडल स्किनकेअर</span></li>
+                            </ul>
+                            <div class="service-footer">
+                                <a href="https://wa.me/919876543210?text=मला%20ब्रायडल%20मेकअपबद्दल%20माहिती%20हवी%20आहे"
+                                    class="btn-card-action"><span data-i18n="btn_inquire">चौकशी करा</span> <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service 2: Makeup Orders -->
+                    <div class="service-card">
+                        <div class="service-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80"
+                                alt="मेकअप ऑर्डर">
+                            <span class="service-badge-pill" data-i18n="s2_badge">मेकअप ऑर्डर</span>
+                        </div>
+                        <div class="service-body">
+                            <div class="service-icon-box"><i class="fas fa-magic"></i></div>
+                            <h3 class="service-heading" data-i18n="s2_title">मेकअप ऑर्डर (सर्व समारंभांसाठी)</h3>
+                            <p class="service-desc" data-i18n="s2_desc">
+                                साखरपुडा, रिसेप्शन, डोहाळे जेवण, वाढदिवस आणि सर्व प्रकारच्या कौटुंबिक सोहळ्यांसाठी आकर्षक व
+                                प्रदीर्घ काळ टिकणारा प्रोफेशनल मेकअप.
+                            </p>
+                            <ul class="service-features">
+                                <li><i class="fas fa-check"></i> <span data-i18n="s2_f1">साखरपुडा व रिसेप्शन मेकअप</span></li>
+                                <li><i class="fas fa-check"></i> <span data-i18n="s2_f2">फोटोशूट व इव्हेंट मेकअप</span></li>
+                                <li><i class="fas fa-check"></i> <span data-i18n="s2_f3">वॉटरप्रूफ आणि ग्लोइंग फिनिश</span></li>
+                            </ul>
+                            <div class="service-footer">
+                                <a href="https://wa.me/919876543210?text=मला%20मेकअप%20ऑर्डरबद्दल%20माहिती%20हवी%20आहे"
+                                    class="btn-card-action"><span data-i18n="btn_inquire">चौकशी करा</span> <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service 3: Sider Makeup -->
+                    <div class="service-card">
+                        <div class="service-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80"
+                                alt="साइडर मेकअप">
+                            <span class="service-badge-pill" data-i18n="s3_badge">साइडर मेकअप</span>
+                        </div>
+                        <div class="service-body">
+                            <div class="service-icon-box"><i class="fas fa-heart"></i></div>
+                            <h3 class="service-heading" data-i18n="s3_title">साइडर मेकअप (पार्टी व फॅमिली लुक)</h3>
+                            <p class="service-desc" data-i18n="s3_desc">
+                                वधूच्या बहिणी, मैत्रिणी व नातेवाईकांसाठी एलिगंट साइडर मेकअप. नैसर्गिक चमक आणि ट्रेंडी
+                                हेअरस्टाइल्ससह सर्वांचे लक्ष वेधून घेणारा लुक.
+                            </p>
+                            <ul class="service-features">
+                                <li><i class="fas fa-check"></i> <span data-i18n="s3_f1">ग्रुप व फॅमिली मेकअप बुकिंग</span></li>
+                                <li><i class="fas fa-check"></i> <span data-i18n="s3_f2">आकर्षक हेअरस्टाईल व फ्लॉवर सेटिंग</span></li>
+                                <li><i class="fas fa-check"></i> <span data-i18n="s3_f3">नॅचरल व पार्टी ग्लो</span></li>
+                            </ul>
+                            <div class="service-footer">
+                                <a href="https://wa.me/919876543210?text=मला%20साइडर%20मेकअपबद्दल%20माहिती%20हवी%20आहे"
+                                    class="btn-card-action"><span data-i18n="btn_inquire">चौकशी करा</span> <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service 4: Bleach & Facial -->
+                    <div class="service-card">
+                        <div class="service-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80"
+                                alt="ब्लिच फेशियल">
+                            <span class="service-badge-pill" data-i18n="s4_badge">ब्लिच फेशियल</span>
+                        </div>
+                        <div class="service-body">
+                            <div class="service-icon-box"><i class="fas fa-leaf"></i></div>
+                            <h3 class="service-heading" data-i18n="s4_title">ब्लिच व फेशियल स्किनकेअर</h3>
+                            <p class="service-desc" data-i18n="s4_desc">
+                                त्वचेचा तजेला परत मिळवण्यासाठी गोल्ड फेशियल, डायमंड ग्लो, डी-टॅन, फ्रूट फेशियल आणि दर्जेदार
+                                ब्लिच ट्रीटमेंट.
+                            </p>
+                            <ul class="service-features">
+                                <li><i class="fas fa-check"></i> <span data-i18n="s4_f1">स्किन ब्राईटनिंग व डी-टॅन फेशियल</span></li>
+                                <li><i class="fas fa-check"></i> <span data-i18n="s4_f2">गोल्ड, डायमंड व पर्ल फेशियल्स</span></li>
+                                <li><i class="fas fa-check"></i> <span data-i18n="s4_f3">सेफ आणि हर्बल ब्लिच केअर</span></li>
+                            </ul>
+                            <div class="service-footer">
+                                <a href="https://wa.me/919876543210?text=मला%20ब्लिच%20फेशियल%20ट्रीटमेंटबद्दल%20माहिती%20हवी%20आहे"
+                                    class="btn-card-action"><span data-i18n="btn_inquire">चौकशी करा</span> <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Additional Salon Services Grid -->
+                <div class="other-services-box">
+                    <h3 class="sub-section-title"><i class="fas fa-sparkles"></i> <span data-i18n="other_services_title">इतर पार्लर सेवा</span></h3>
+                    <div class="mini-services-grid">
+                        <div class="mini-service-item">
+                            <div class="mini-icon"><i class="fas fa-cut"></i></div>
+                            <h4 data-i18n="mini_s1_title">हेअर कटिंग व स्टायलिंग</h4>
+                            <p data-i18n="mini_s1_desc">लेयर, फेदर, बॉब आणि ट्रेंडी कट्स</p>
+                        </div>
+                        <div class="mini-service-item">
+                            <div class="mini-icon"><i class="fas fa-spa"></i></div>
+                            <h4 data-i18n="mini_s2_title">हेअर स्पा व ट्रीटमेंट</h4>
+                            <p data-i18n="mini_s2_desc">केसांना पोषण आणि रेशमी मऊपणा</p>
+                        </div>
+                        <div class="mini-service-item">
+                            <div class="mini-icon"><i class="fas fa-hand-sparkles"></i></div>
+                            <h4 data-i18n="mini_s3_title">मॅनिक्युअर व पॅडिक्युअर</h4>
+                            <p data-i18n="mini_s3_desc">हात आणि पायांची सखोल स्वच्छता व काळजी</p>
+                        </div>
+                        <div class="mini-service-item">
+                            <div class="mini-icon"><i class="fas fa-feather-alt"></i></div>
+                            <h4 data-i18n="mini_s4_title">थ्रेडिंग व वॅक्सिंग</h4>
+                            <p data-i18n="mini_s4_desc">आयब्रो शेपिंग आणि स्मूथ वॅक्सिंग सेवा</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section id="speciality" class="why-us-section">
+            <div class="container">
+                <div class="why-us-grid">
+                    <div class="why-us-text">
+                        <span class="tag-pill" data-i18n="why_pill">आमची खासियत</span>
+                        <h2 class="why-title" data-i18n="why_title">माऊली ब्युटी पार्लर का निवडावे?</h2>
+                        <p class="why-desc" data-i18n="why_desc">
+                            आम्ही केवळ सेवा देत नाही, तर प्रत्येक महिलेच्या व्यक्तिमत्त्वाला साजेसा सुंदर आणि आत्मविश्वास
+                            वाढवणारा लुक देतो.
+                        </p>
+
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-award"></i></div>
+                                <div class="feature-info">
+                                    <h4 data-i18n="feat1_title">अनुभवी ब्युटीशियन व मेकअप आर्टिस्ट</h4>
+                                    <p data-i18n="feat1_desc">प्रशिक्षित व ट्रेंडनुसार आधुनिक तंत्रज्ञानाची जाण असणारी तज्ज्ञ टीम.</p>
+                                </div>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-pump-soap"></i></div>
+                                <div class="feature-info">
+                                    <h4 data-i18n="feat2_title">१००% ब्रँडेड व सुरक्षित उत्पादने</h4>
+                                    <p data-i18n="feat2_desc">त्वचेला कोणतेही नुकसान न पोहोचवणारी आंतरराष्ट्रीय दर्जाची कॉस्मेटिक्स.</p>
+                                </div>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-home"></i></div>
+                                <div class="feature-info">
+                                    <h4 data-i18n="feat3_title">ब्रायडल ऑर्डरसाठी होम / व्हेन्यू व्हिजिट</h4>
+                                    <p data-i18n="feat3_desc">लग्नाच्या दिवशी तुमच्या सोयीनुसार हॉल किंवा घरी वेळेवर हजर राहून सेवा.</p>
+                                </div>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon"><i class="fas fa-tags"></i></div>
+                                <div class="feature-info">
+                                    <h4 data-i18n="feat4_title">वाजवी दर आणि उत्कृष्ट गुणवत्ता</h4>
+                                    <p data-i18n="feat4_desc">सर्व बजेटमध्ये उपलब्ध परवडणारे आणि दर्जेदार सौंदर्य पॅकेजेस.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="why-us-visual">
+                        <div class="review-box">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="review-quote" data-i18n="review_quote">"माऊली ब्युटी पार्लरमध्ये केलेला ब्रायडल मेकअप अप्रतिम होता. लग्नात
+                                सर्वांनी लुकचे खूप कौतुक केले!"</p>
+                            <span class="reviewer-name" data-i18n="reviewer_name">- तृप्ती पाटील (आनंदी ग्राहक)</span>
+                        </div>
+                        <div class="experience-badge">
+                            <span class="exp-num" data-i18n="exp_number">५००+</span>
+                            <span class="exp-text" data-i18n="exp_label">यशस्वी ब्रायडल व मेकअप ऑर्डर्स</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bridal Packages Section -->
+        <section id="packages" class="packages-section">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <div class="ornament-divider">
+                        <span>❖</span><span class="line"></span><span>✦</span><span class="line"></span><span>❖</span>
+                    </div>
+                    <h2 class="section-title" data-i18n="pkg_section_title">खास ब्रायडल पॅकेजेस</h2>
+                    <p class="section-subtitle" data-i18n="pkg_section_subtitle">Specially Crafted Packages for Your Special Day</p>
+                </div>
+
+                <div class="packages-grid">
+
+                    <!-- Package 1 -->
+                    <div class="package-card">
+                        <div class="package-header">
+                            <span class="pkg-label" data-i18n="pkg1_label">सिल्व्हर पॅकेज</span>
+                            <h3 class="pkg-title" data-i18n="pkg1_title">पार्टी & साइडर लुक</h3>
+                            <div class="pkg-price" data-i18n="pkg1_price">खास दर</div>
+                        </div>
+                        <ul class="pkg-features">
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="pkg1_f1">पार्टी एचडी मेकअप</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="pkg1_f2">हेअर स्टाईल व ॲक्सेसरीज</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="pkg1_f3">साडी / ड्रेस ड्रेपिंग</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="pkg1_f4">सिम्पल आय मेकअप</span></li>
+                        </ul>
+                        <a href="https://wa.me/919876543210?text=मला%20सिल्व्हर%20पॅकेज%20बद्दल%20माहिती%20हवी%20आहे"
+                            class="btn btn-outline-gold btn-block" data-i18n="btn_select_pkg">पॅकेज निवडा</a>
+                    </div>
+
+                    <!-- Package 2 (Popular) -->
+                    <div class="package-card popular">
+                        <div class="popular-tag"><i class="fas fa-crown"></i> <span data-i18n="popular_badge">सर्वाधिक पसंतीचे</span></div>
+                        <div class="package-header">
+                            <span class="pkg-label" data-i18n="pkg2_label">गोल्डन ब्रायडल पॅकेज</span>
+                            <h3 class="pkg-title" data-i18n="pkg2_title">कम्प्लीट ब्रायडल लुक</h3>
+                            <div class="pkg-price" data-i18n="pkg2_price">बेस्ट ऑफर</div>
+                        </div>
+                        <ul class="pkg-features">
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="pkg2_f1">प्रीमियम HD ब्रायडल मेकअप</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="pkg2_f2">लक्झरी ब्रायडल हेअरस्टाइल</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="pkg2_f3">नऊवारी / पैठणी साडी ड्रेपिंग</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="pkg2_f4">ज्वेलरी व बिंदी सेटिंग</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="pkg2_f5">१ साइडर मेकअप फ्री</span></li>
+                        </ul>
+                        <a href="https://wa.me/919876543210?text=मला%20गोल्डन%20ब्रायडल%20पॅकेज%20बद्दल%20माहिती%20हवी%20आहे"
+                            class="btn btn-gold btn-block" data-i18n="btn_book_now">आताच बुक करा</a>
+                    </div>
+
+                    <!-- Package 3 -->
+                    <div class="package-card">
+                        <div class="package-header">
+                            <span class="pkg-label" data-i18n="pkg3_label">रॉयल डायमंड पॅकेज</span>
+                            <h3 class="pkg-title" data-i18n="pkg3_title">प्री-ब्रायडल + ब्रायडल</h3>
+                            <div class="pkg-price" data-i18n="pkg3_price">रॉयल पॅकेज</div>
+                        </div>
+                        <ul class="pkg-features">
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="pkg3_f1">एअरब्रश अल्ट्रा HD मेकअप</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="pkg3_f2">लग्नापूर्वी २ फेशियल व स्किन ग्लो</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="pkg3_f3">ब्रायडल मॅनिक्युअर व पॅडिक्युअर</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="pkg3_f4">२ साइडर मेकअप समाविष्ट</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="pkg3_f5">व्हेन्यू व्हिजिट सुविधा</span></li>
+                        </ul>
+                        <a href="https://wa.me/919876543210?text=मला%20रॉयल%20डायमंड%20पॅकेज%20बद्दल%20माहिती%20हवी%20आहे"
+                            class="btn btn-outline-gold btn-block" data-i18n="btn_select_pkg">पॅकेज निवडा</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="gallery-section">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <div class="ornament-divider">
+                        <span>❖</span><span class="line"></span><span>✦</span><span class="line"></span><span>❖</span>
+                    </div>
+                    <h2 class="section-title" data-i18n="gallery_title">फोटो गॅलरी</h2>
+                    <p class="section-subtitle" data-i18n="gallery_subtitle">Our Beautiful Makeover Highlights</p>
+                </div>
+
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1595955793665-c18c5c53ed11?auto=format&fit=crop&w=500&q=80"
+                            alt="ब्रायडल मेकअप">
+                        <div class="gallery-overlay">
+                            <span data-i18n="gal1">ब्रायडल मेकअप</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=500&q=80"
+                            alt="आय मेकअप व ब्युटी">
+                        <div class="gallery-overlay">
+                            <span data-i18n="gal2">आय मेकअप & ब्युटी</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=500&q=80"
+                            alt="साइडर व पार्टी मेकअप">
+                        <div class="gallery-overlay">
+                            <span data-i18n="gal3">साइडर व पार्टी लुक</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=500&q=80"
+                            alt="फेशियल स्किनकेअर">
+                        <div class="gallery-overlay">
+                            <span data-i18n="gal4">फेशियल व स्किन ग्लो</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & Booking Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <div class="ornament-divider">
+                        <span>❖</span><span class="line"></span><span>✦</span><span class="line"></span><span>❖</span>
+                    </div>
+                    <h2 class="section-title" data-i18n="contact_title">संपर्क व बुकिंग</h2>
+                    <p class="section-subtitle" data-i18n="contact_subtitle">Get in Touch with Mauli Beauty Parlour</p>
+                </div>
+
+                <div class="contact-wrapper">
+                    <!-- Info Side -->
+                    <div class="contact-info-card">
+                        <div class="info-header">
+                            <h3 data-i18n="brand_name">माऊली ब्युटी पार्लर</h3>
+                            <p class="info-tag" data-i18n="hero_tagline">सौंदर्य तुमचे, काळजी आमची !</p>
+                        </div>
+
+                        <div class="contact-details">
+                            <div class="detail-row">
+                                <div class="detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                <div>
+                                    <h4 data-i18n="contact_address_label">पत्ता :</h4>
+                                    <p data-i18n="contact_address_val">मेन रोड, बाजारपेठ जवळ, (तुमच्या शहराचे नाव / पत्ता), महाराष्ट्र.</p>
+                                </div>
+                            </div>
+
+                            <div class="detail-row">
+                                <div class="detail-icon"><i class="fas fa-phone-alt"></i></div>
+                                <div>
+                                    <h4 data-i18n="contact_phone_label">फोन / संपर्क :</h4>
+                                    <p><a href="tel:+919876543210">+91 98765 43210</a> / <a href="tel:+919123456780">+91
+                                            91234 56780</a></p>
+                                </div>
+                            </div>
+
+                            <div class="detail-row">
+                                <div class="detail-icon"><i class="fab fa-whatsapp"></i></div>
+                                <div>
+                                    <h4 data-i18n="contact_whatsapp_label">व्हॉट्सॲप :</h4>
+                                    <p><a href="https://wa.me/919876543210" target="_blank">+91 98765 43210 (Direct
+                                            Chat)</a></p>
+                                </div>
+                            </div>
+
+                            <div class="detail-row">
+                                <div class="detail-icon"><i class="fas fa-clock"></i></div>
+                                <div>
+                                    <h4 data-i18n="contact_hours_label">कामाची वेळ :</h4>
+                                    <p data-i18n="contact_hours_val">सोमवार ते रविवार: सकाळी ९:०० ते रात्री ८:००</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="quick-call-box">
+                            <p data-i18n="quick_call_text">तातडीच्या ब्रायडल ऑर्डर व चौकशीसाठी थेट कॉल करा :</p>
+                            <a href="tel:+919876543210" class="btn btn-gold btn-block"><i class="fas fa-phone-volume"></i>
+                                <span data-i18n="btn_call_now">आताच कॉल करा</span></a>
+                        </div>
+                    </div>
+
+                    <!-- Booking Form Side -->
+                    <div class="booking-form-card">
+                        <h3><i class="far fa-envelope-open"></i> <span data-i18n="form_title">अपॉइंटमेंट किंवा ऑर्डर नोंदवा</span></h3>
+                        <p class="form-desc" data-i18n="form_desc">खालील माहिती भरा, आम्ही लवकरात लवकर संपर्क करू.</p>
+
+                        <form action="https://wa.me/919876543210" method="get" target="_blank" class="beauty-form">
+                            <div class="form-group">
+                                <label for="name"><i class="fas fa-user"></i> <span data-i18n="label_name">आपले नाव (Full Name):</span></label>
+                                <input type="text" id="name" name="name" placeholder="उदा. अनिता शिंदे" data-i18n-placeholder="placeholder_name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone"><i class="fas fa-mobile-alt"></i> <span data-i18n="label_phone">मोबाईल नंबर (Phone Number):</span></label>
+                                <input type="tel" id="phone" name="phone" placeholder="उदा. 9876543210" data-i18n-placeholder="placeholder_phone" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="service"><i class="fas fa-sparkles"></i> <span data-i18n="label_service">हवी असलेली सेवा (Service Needed):</span></label>
+                                <select id="service" name="service" required>
+                                    <option value="" disabled selected data-i18n="opt_select_default">-- सेवा निवडा --</option>
+                                    <option value="ब्रायडल मेकअप ऑर्डर" data-i18n="opt_bridal">सर्व प्रकारच्या ब्रायडल ऑर्डर (Bridal)</option>
+                                    <option value="मेकअप ऑर्डर" data-i18n="opt_makeup">मेकअप ऑर्डर (Engagement/Event)</option>
+                                    <option value="साइडर मेकअप" data-i18n="opt_sider">साइडर मेकअप (Sider Makeup)</option>
+                                    <option value="ब्लिच व फेशियल" data-i18n="opt_facial">ब्लिच व फेशियल (Facial/Bleach)</option>
+                                    <option value="इतर पार्लर सेवा" data-i18n="opt_other">इतर पार्लर सेवा (Hair/Skin)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="date"><i class="far fa-calendar-alt"></i> <span data-i18n="label_date">तारीख (Date of Event / Visit):</span></label>
+                                <input type="date" id="date" name="date">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message"><i class="far fa-comment-dots"></i> <span data-i18n="label_message">अतिरिक्त माहिती / पत्ता:</span></label>
+                                <textarea id="message" name="message" rows="3"
+                                    placeholder="ऑर्डरबद्दल काही विशेष माहिती..." data-i18n-placeholder="placeholder_message"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-gold btn-block btn-large">
+                                <i class="fab fa-whatsapp"></i> <span data-i18n="btn_submit_whatsapp">व्हॉट्सॲपवर बुकिंग पाठवा</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <div class="container footer-container">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <i class="fas fa-spa"></i>
+                        <h2 data-i18n="brand_name">माऊली ब्युटी पार्लर</h2>
+                    </div>
+                    <p class="footer-tagline" data-i18n="hero_tagline">सौंदर्य तुमचे, काळजी आमची !</p>
+                    <p class="footer-note" data-i18n="footer_brand_note">सर्व प्रकारच्या ब्रायडल, साइडर, मेकअप व फेशियल ऑर्डर्स स्वीकारल्या जातात.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4 data-i18n="footer_quick_links">द्रुत लिंक्स (Quick Links)</h4>
+                    <ul>
+                        <li><a href="#home" data-i18n="nav_home">मुख्यपृष्ठ</a></li>
+                        <li><a href="#services" data-i18n="nav_services">आमच्या सेवा</a></li>
+                        <li><a href="#packages" data-i18n="nav_packages">ब्रायडल पॅकेजेस</a></li>
+                        <li><a href="#gallery" data-i18n="nav_gallery">गॅलरी</a></li>
+                        <li><a href="#contact" data-i18n="nav_contact">संपर्क</a></li>
                     </ul>
-                    <a href="https://wa.me/919876543210?text=मला%20सिल्व्हर%20पॅकेज%20बद्दल%20माहिती%20हवी%20आहे"
-                        class="btn btn-outline-gold btn-block">पॅकेज निवडा</a>
                 </div>
 
-                <!-- Package 2 (Popular) -->
-                <div class="package-card popular">
-                    <div class="popular-tag"><i class="fas fa-crown"></i> सर्वाधिक पसंतीचे</div>
-                    <div class="package-header">
-                        <span class="pkg-label">गोल्डन ब्रायडल पॅकेज</span>
-                        <h3 class="pkg-title">कम्प्लीट ब्रायडल लुक</h3>
-                        <div class="pkg-price">बेस्ट ऑफर</div>
-                    </div>
-                    <ul class="pkg-features">
-                        <li><i class="fas fa-check-circle"></i> प्रीमियम HD ब्रायडल मेकअप</li>
-                        <li><i class="fas fa-check-circle"></i> लक्झरी ब्रायडल हेअरस्टाइल</li>
-                        <li><i class="fas fa-check-circle"></i> नऊवारी / पैठणी साडी ड्रेपिंग</li>
-                        <li><i class="fas fa-check-circle"></i> ज्वेलरी व बिंदी सेटिंग</li>
-                        <li><i class="fas fa-check-circle"></i> १ साइडर मेकअप फ्री</li>
+                <div class="footer-services">
+                    <h4 data-i18n="footer_services_heading">प्रमुख सेवा</h4>
+                    <ul>
+                        <li data-i18n="footer_s1">ब्रायडल मेकअप ऑर्डर</li>
+                        <li data-i18n="footer_s2">साखरपुडा व पार्टी मेकअप</li>
+                        <li data-i18n="footer_s3">साइडर मेकअप</li>
+                        <li data-i18n="footer_s4">गोल्ड व डायमंड फेशियल</li>
+                        <li data-i18n="footer_s5">हेअर स्पा व स्टायलिंग</li>
                     </ul>
-                    <a href="https://wa.me/919876543210?text=मला%20गोल्डन%20ब्रायडल%20पॅकेज%20बद्दल%20माहिती%20हवी%20आहे"
-                        class="btn btn-gold btn-block">आताच बुक करा</a>
-                </div>
-
-                <!-- Package 3 -->
-                <div class="package-card">
-                    <div class="package-header">
-                        <span class="pkg-label">रॉयल डायमंड पॅकेज</span>
-                        <h3 class="pkg-title">प्री-ब्रायडल + ब्रायडल</h3>
-                        <div class="pkg-price">रॉयल पॅकेज</div>
-                    </div>
-                    <ul class="pkg-features">
-                        <li><i class="fas fa-check-circle"></i> एअरब्रश अल्ट्रा HD मेकअप</li>
-                        <li><i class="fas fa-check-circle"></i> लग्नापूर्वी २ फेशियल व स्किन ग्लो</li>
-                        <li><i class="fas fa-check-circle"></i> ब्रायडल मॅनिक्युअर व पॅडिक्युअर</li>
-                        <li><i class="fas fa-check-circle"></i> २ साइडर मेकअप समाविष्ट</li>
-                        <li><i class="fas fa-check-circle"></i> व्हेन्यू व्हिजिट सुविधा</li>
-                    </ul>
-                    <a href="https://wa.me/919876543210?text=मला%20रॉयल%20डायमंड%20पॅकेज%20बद्दल%20माहिती%20हवी%20आहे"
-                        class="btn btn-outline-gold btn-block">पॅकेज निवडा</a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery-section">
-        <div class="container">
-            <div class="section-title-wrap">
-                <div class="ornament-divider">
-                    <span>❖</span><span class="line"></span><span>✦</span><span class="line"></span><span>❖</span>
-                </div>
-                <h2 class="section-title">फोटो गॅलरी</h2>
-                <p class="section-subtitle">Our Beautiful Makeover Highlights</p>
-            </div>
-
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1595955793665-c18c5c53ed11?auto=format&fit=crop&w=500&q=80"
-                        alt="ब्रायडल मेकअप">
-                    <div class="gallery-overlay">
-                        <span>ब्रायडल मेकअप</span>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=500&q=80"
-                        alt="आय मेकअप व ब्युटी">
-                    <div class="gallery-overlay">
-                        <span>आय मेकअप & ब्युटी</span>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=500&q=80"
-                        alt="साइडर व पार्टी मेकअप">
-                    <div class="gallery-overlay">
-                        <span>साइडर व पार्टी लुक</span>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=500&q=80"
-                        alt="फेशियल स्किनकेअर">
-                    <div class="gallery-overlay">
-                        <span>फेशियल व स्किन ग्लो</span>
-                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Contact & Booking Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <div class="section-title-wrap">
-                <div class="ornament-divider">
-                    <span>❖</span><span class="line"></span><span>✦</span><span class="line"></span><span>❖</span>
-                </div>
-                <h2 class="section-title">संपर्क व बुकिंग</h2>
-                <p class="section-subtitle">Get in Touch with Mauli Beauty Parlour</p>
-            </div>
-
-            <div class="contact-wrapper">
-                <!-- Info Side -->
-                <div class="contact-info-card">
-                    <div class="info-header">
-                        <h3>माऊली ब्युटी पार्लर</h3>
-                        <p class="info-tag">सौंदर्य तुमचे, काळजी आमची !</p>
-                    </div>
-
-                    <div class="contact-details">
-                        <div class="detail-row">
-                            <div class="detail-icon"><i class="fas fa-map-marker-alt"></i></div>
-                            <div>
-                                <h4>पत्ता :</h4>
-                                <p>मेन रोड, बाजारपेठ जवळ, (तुमच्या शहराचे नाव / पत्ता), महाराष्ट्र.</p>
-                            </div>
-                        </div>
-
-                        <div class="detail-row">
-                            <div class="detail-icon"><i class="fas fa-phone-alt"></i></div>
-                            <div>
-                                <h4>फोन / संपर्क :</h4>
-                                <p><a href="tel:+919876543210">+91 98765 43210</a> / <a href="tel:+919123456780">+91
-                                        91234 56780</a></p>
-                            </div>
-                        </div>
-
-                        <div class="detail-row">
-                            <div class="detail-icon"><i class="fab fa-whatsapp"></i></div>
-                            <div>
-                                <h4>व्हॉट्सॲप :</h4>
-                                <p><a href="https://wa.me/919876543210" target="_blank">+91 98765 43210 (Direct
-                                        Chat)</a></p>
-                            </div>
-                        </div>
-
-                        <div class="detail-row">
-                            <div class="detail-icon"><i class="fas fa-clock"></i></div>
-                            <div>
-                                <h4>कामाची वेळ :</h4>
-                                <p>सोमवार ते रविवार: सकाळी ९:०० ते रात्री ८:००</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="quick-call-box">
-                        <p>तातडीच्या ब्रायडल ऑर्डर व चौकशीसाठी थेट कॉल करा :</p>
-                        <a href="tel:+919876543210" class="btn btn-gold btn-block"><i class="fas fa-phone-volume"></i>
-                            आताच कॉल करा</a>
-                    </div>
-                </div>
-
-                <!-- Booking Form Side (Pure HTML/CSS friendly) -->
-                <div class="booking-form-card">
-                    <h3><i class="far fa-envelope-open"></i> अपॉइंटमेंट किंवा ऑर्डर नोंदवा</h3>
-                    <p class="form-desc">खालील माहिती भरा, आम्ही लवकरात लवकर संपर्क करू.</p>
-
-                    <form action="https://wa.me/919876543210" method="get" target="_blank" class="beauty-form">
-                        <div class="form-group">
-                            <label for="name"><i class="fas fa-user"></i> आपले नाव (Full Name):</label>
-                            <input type="text" id="name" name="name" placeholder="उदा. अनिता शिंदे" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="phone"><i class="fas fa-mobile-alt"></i> मोबाईल नंबर (Phone Number):</label>
-                            <input type="tel" id="phone" name="phone" placeholder="उदा. 9876543210" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="service"><i class="fas fa-sparkles"></i> हवी असलेली सेवा (Service
-                                Needed):</label>
-                            <select id="service" name="service" required>
-                                <option value="" disabled selected>-- सेवा निवडा --</option>
-                                <option value="ब्रायडल मेकअप ऑर्डर">सर्व प्रकारच्या ब्रायडल ऑर्डर (Bridal)</option>
-                                <option value="मेकअप ऑर्डर">मेकअप ऑर्डर (Engagement/Event)</option>
-                                <option value="साइडर मेकअप">साइडर मेकअप (Sider Makeup)</option>
-                                <option value="ब्लिच व फेशियल">ब्लिच व फेशियल (Facial/Bleach)</option>
-                                <option value="इतर पार्लर सेवा">इतर पार्लर सेवा (Hair/Skin)</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="date"><i class="far fa-calendar-alt"></i> तारीख (Date of Event / Visit):</label>
-                            <input type="date" id="date" name="date">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message"><i class="far fa-comment-dots"></i> अतिरिक्त माहिती / पत्ता:</label>
-                            <textarea id="message" name="message" rows="3"
-                                placeholder="ऑर्डरबद्दल काही विशेष माहिती..."></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-gold btn-block btn-large">
-                            <i class="fab fa-whatsapp"></i> व्हॉट्सॲपवर बुकिंग पाठवा
-                        </button>
-                    </form>
+            <div class="footer-bottom">
+                <div class="container copyright-flex">
+                    <p data-i18n="copyright_text">© 2026 माऊली ब्युटी पार्लर. सर्व हक्क राखीव (All Rights Reserved).</p>
+                    <p class="credit">Designed with <i class="fas fa-heart" style="color: #f5d77f;"></i> for Mauli Beauty Parlour</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </footer>
 
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="container footer-container">
-            <div class="footer-brand">
-                <div class="footer-logo">
-                    <i class="fas fa-spa"></i>
-                    <h2>माऊली ब्युटी पार्लर</h2>
-                </div>
-                <p class="footer-tagline">सौंदर्य तुमचे, काळजी आमची !</p>
-                <p class="footer-note">सर्व प्रकारच्या ब्रायडल, साइडर, मेकअप व फेशियल ऑर्डर्स स्वीकारल्या जातात.</p>
-            </div>
-
-            <div class="footer-links">
-                <h4>द्रुत लिंक्स (Quick Links)</h4>
-                <ul>
-                    <li><a href="#home">मुख्यपृष्ठ</a></li>
-                    <li><a href="#services">आमच्या सेवा</a></li>
-                    <li><a href="#packages">ब्रायडल पॅकेजेस</a></li>
-                    <li><a href="#gallery">गॅलरी</a></li>
-                    <li><a href="#contact">संपर्क</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-services">
-                <h4>प्रमुख सेवा</h4>
-                <ul>
-                    <li>ब्रायडल मेकअप ऑर्डर</li>
-                    <li>साखरपुडा व पार्टी मेकअप</li>
-                    <li>साइडर मेकअप</li>
-                    <li>गोल्ड व डायमंड फेशियल</li>
-                    <li>हेअर स्पा व स्टायलिंग</li>
-                </ul>
-            </div>
+        <!-- Floating Sticky Action Buttons for Mobile -->
+        <div class="floating-action-buttons">
+            <a href="https://wa.me/919876543210?text=नमस्कार,%20मला%20माऊली%20ब्युटी%20पार्लरबद्दल%20माहिती%20हवी%20आहे."
+                target="_blank" class="float-btn float-whatsapp" title="WhatsApp वर संपर्क करा">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="tel:+919876543210" class="float-btn float-call" title="कॉल करा">
+                <i class="fas fa-phone-alt"></i>
+            </a>
         </div>
 
-        <div class="footer-bottom">
-            <div class="container copyright-flex">
-                <p>© 2026 माऊली ब्युटी पार्लर. सर्व हक्क राखीव (All Rights Reserved).</p>
-                <p class="credit">Designed with <i class="fas fa-heart" style="color: #f5d77f;"></i> for Mauli Beauty
-                    Parlour</p>
-            </div>
-        </div>
-    </footer>
+    </div> <!-- End of Page Content Wrapper -->
 
-    <!-- Floating Sticky Action Buttons for Mobile -->
-    <div class="floating-action-buttons">
-        <a href="https://wa.me/919876543210?text=नमस्कार,%20मला%20माऊली%20ब्युटी%20पार्लरबद्दल%20माहिती%20हवी%20आहे."
-            target="_blank" class="float-btn float-whatsapp" title="WhatsApp वर संपर्क करा">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="tel:+919876543210" class="float-btn float-call" title="कॉल करा">
-            <i class="fas fa-phone-alt"></i>
-        </a>
-    </div>
-
+    <!-- Multi-language Script -->
+    <script src="script.js"></script>
 </body>
 
 </html>
